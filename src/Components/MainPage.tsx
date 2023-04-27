@@ -16,6 +16,24 @@ const MainPage = () => {
       </div>
       <div className={styles.foodFullContainer}>
         <span>전체상품</span>
+        <div className={styles.foodList}>
+          <ul>
+            {
+              Array.from({ length: 8 }).map((_, index) => {
+                return (
+                  <li key={index} className={styles.foodListLi}>
+                    <section className={styles.imgSection}>
+                      <img />
+                    </section>
+                    <section className={styles.descSection}>
+                      <p>곡물 샐러드</p>
+                    </section>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
       </div>
     </div>
   )
