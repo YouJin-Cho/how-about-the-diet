@@ -1,0 +1,89 @@
+.registrationContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 1280px;
+  height: 700px;
+  /* background: #bcffe1; */
+}
+
+.registrationBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 500px;
+  margin: 0 auto;
+  background: #4ac388;
+  border: 1px solid #4ac388;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px #00000040;
+}
+
+.idNickname {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0px 15px 0px;
+}
+
+.idNickname > div {
+  padding: 5px;
+}
+
+.idNickname > div > span:first-child {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.idNickname > div > span:last-child {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 5px;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.idNickname > div > input {
+  display: flex;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 20px;
+}
+
+.passwordConfirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0px 30px 0px;
+}
+
+.passwordConfirm > div {
+  padding: 5px;
+}
+
+.passwordConfirm > div > span{
+  font-weight: bold;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.passwordConfirm > div > input {
+  display: flex;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 20px;
+}
+
+.registrationBox > button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 70px;
+  margin-top: 20px;
+  font-weight: bold;
+  background: #00a554;
+  color: #ffffff;
+}

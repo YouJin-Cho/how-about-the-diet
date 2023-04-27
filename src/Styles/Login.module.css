@@ -1,0 +1,88 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 1280px;
+  height: 700px;
+  /* background: #bcffe1; */
+}
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 500px;
+  margin: 0 auto;
+  background: #4ac388;
+  border: 1px solid #4ac388;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px #00000040;
+}
+
+.idPassword {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0px 30px 0px;
+}
+
+.idPassword > div {
+  padding: 20px;
+}
+
+.idPassword > div > span {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.idPassword > div > input {
+  display: flex;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 20px;
+}
+
+.idPassword > button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 76px;
+  margin-top: 20px;
+  font-weight: bold;
+  background: #00a554;
+  color: #ffffff;
+}
+
+.snsLogin {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.snsLogin > span {
+  font-size: 17px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.googleLogin {
+  font-size: 35px;
+  padding: 5px;
+  border: 1px solid #00a554;
+  border-radius: 6px;
+  background: #00a554;
+  margin-right: 15px;
+}
+
+.snsLogin > button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 10px;
+  font-weight: bold;
+  background: #00a554;
+  color: #ffffff;
+}
