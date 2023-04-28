@@ -1,6 +1,6 @@
-import styles from '../Styles/SearchList.module.css'
+import styles from '../Styles/DetailFood.module.css'
 
-const SearchList = () => {
+const DetailFood = () => {
   return (
     <div className={styles.searchContainer}>
       <div className={styles.foodTitle}>
@@ -11,7 +11,9 @@ const SearchList = () => {
           <img src='../../public/Add/001.png'/>
         </div>
         <div className={styles.foodImgDesc}>
-          <p>설명</p>
+          <p>
+          상품 특징
+          </p>
           <div>
             <hr />
             <div className={styles.likeSection}>
@@ -21,12 +23,16 @@ const SearchList = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className={styles.cookingDesc}>
         <p>필요 재료</p>
+        <span className={styles.cookingFirstDesc}>설명</span>
         <p>요리 조리법</p>
+        <span>
+          설명
+        </span>
       </div>
     </div>
   )
 }
 
-export default SearchList
+export default DetailFood
