@@ -13,7 +13,7 @@ const Header = () => {
           </div>
         </Link>
         <ul className={styles.headerUl}>
-          <li>영양소</li>
+          <Link to='/nutrients'><li>영양소</li></Link>
           <li>전체상품</li>
         </ul>
       </div>

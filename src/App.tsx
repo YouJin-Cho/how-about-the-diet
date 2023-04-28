@@ -7,11 +7,11 @@ import MainContainer from './Components/MainContainer'
 function App() {
 
   return (
-      <BrowserRouter>
-        <Header />
-        <MainContainer />
-        <Footer />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Header />
+      <MainContainer />
+      <Footer />
+    </BrowserRouter>
   )
 }
 

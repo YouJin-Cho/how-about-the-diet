@@ -4,7 +4,7 @@ import Registration from "./Registration"
 import MainPage from "./MainPage"
 import DetailFood from "./DetailFood"
 import Nutrients from "./Nutrients"
-
+import DetailNutrients from "./DetailNutrients"
 
 const MainContainer = () => {
   return (
@@ -13,6 +13,7 @@ const MainContainer = () => {
       <Route path="/registration" element={<Registration />} />
       <Route path="/" element={<MainPage />} />
       <Route path="/nutrients" element={<Nutrients />} />
+      <Route path="/detailnutrients" element={<DetailNutrients />} />
       <Route path="/detail" element={<DetailFood />} />
     </Routes>
   )
