@@ -1,0 +1,58 @@
+
+.nutrientsContainer {
+  padding: 0px 100px;
+  height: 900px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.nutrientsContainer > h3 {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+  margin-bottom: 70px;
+  border: 3px solid #00a554;
+  border-radius: 16px;
+}
+
+.imgContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 40px;
+}
+
+.imgContainer > div {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imgContainer > div > img {
+  width: 350px;
+  height: 250px;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+}
+
+.imgContainer > div > span {
+  width: 350px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  background: #00a554;
+  color: #ffffff;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
