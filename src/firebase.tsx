@@ -1,4 +1,6 @@
-import * as firebase from 'firebase/app'
+// import * as firebase from 'firebase/app'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -9,4 +11,8 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
+export default firebase;
+export const firebaseInstance = firebase;
+export const authService = firebase.auth();

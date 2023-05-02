@@ -5,7 +5,6 @@
   align-items: center;
   min-width: 1280px;
   height: 700px;
-  /* background: #bcffe1; */
 }
 
 .loginBox {
@@ -13,13 +12,37 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 700px;
   height: 500px;
   margin: 0 auto;
-  background: #4ac388;
-  border: 1px solid #4ac388;
-  border-radius: 16px;
+  border: 3px solid #4ac388;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;;
   box-shadow: 0 25px 50px -12px #00000040;
+}
+
+.loginBox > button {
+  position: absolute;
+  top: -42px;
+  left: -3px;
+  width: 270px;
+  border: none;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  padding: 10px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #00a554;
+  color: #ffffff;
+}
+
+.loginBox > span {
+  font-size: 17px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #ffffff;
 }
 
 .idPassword {
@@ -30,27 +53,29 @@
 }
 
 .idPassword > div {
-  padding: 20px;
+  padding-bottom: 20px;
 }
 
 .idPassword > div > span {
   font-weight: bold;
   margin-right: 10px;
-  color: #ffffff;
+  color: #00a554;
 }
 
 .idPassword > div > input {
   display: flex;
-  border: none;
+  width: 220px;
+  border: 2px solid #00a554;
   border-radius: 6px;
-  padding: 5px 20px;
+  padding: 5px 15px;
 }
 
-.idPassword > button {
+.idPassword > input {
+  width: 220px;
   border: none;
   border-radius: 6px;
-  padding: 10px 76px;
-  margin-top: 20px;
+  padding: 10px 0px;
+  margin-top: 15px;
   font-weight: bold;
   background: #00a554;
   color: #ffffff;
@@ -66,7 +91,7 @@
   font-size: 17px;
   font-weight: bold;
   margin-right: 10px;
-  color: #ffffff;
+  color: #00a554;
 }
 
 .googleLogin {
@@ -76,13 +101,4 @@
   border-radius: 6px;
   background: #00a554;
   margin-right: 15px;
-}
-
-.snsLogin > button {
-  border: none;
-  border-radius: 6px;
-  padding: 10px 10px;
-  font-weight: bold;
-  background: #00a554;
-  color: #ffffff;
 }
