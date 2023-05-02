@@ -20,7 +20,7 @@ const Header = () => {
       <div>
         <ul className={styles.mypageUl}>
           <li>자유게시판</li>
-          <li>마이페이지</li>
+          <Link to='/mypage'><li>마이페이지</li></Link>
         </ul>
       </div>
     </div>

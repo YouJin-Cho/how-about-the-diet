@@ -1,0 +1,9 @@
+.myPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0px 100px;
+  min-width: 1280px;
+  height: 1000px;
+}

@@ -38,8 +38,12 @@ const Login = () => {
       const authError = error as firebase.auth.Error;
       if (authError.code === 'auth/email-already-in-use') {
         alert('이미 가입된 이메일입니다.')
-      } else if (authError.code === 'auth/weak-password'){
+      } else if (authError.code === 'auth/weak-password') {
         alert('비밀번호는 6자리 이상 입력해주세요.')
+      } else if (authError.code === 'auth/wrong-password') {
+        alert('비밀번호를 잘못 입력하였습니다. 다시 입력해주세요.')
+      } else if (authError.code === 'auth/user-not-found') {
+        alert('해당 이메일은 가입되어 있지 않습니다.')
       }
       console.log(error)
     }
