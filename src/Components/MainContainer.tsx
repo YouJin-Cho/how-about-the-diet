@@ -6,6 +6,7 @@ import DetailFood from "./DetailFood"
 import Nutrients from "./Nutrients"
 import DetailNutrients from "./DetailNutrients"
 import MyPage from "./MyPage"
+import nutrientData from '../../public/nutrient.json'
 
 
 interface MainContainerProps {
@@ -19,7 +20,7 @@ const MainContainer = (props:MainContainerProps) => {
       <Route path="/registration" element={<Registration />} />
       <Route path="/" element={<MainPage />} />
       <Route path="/nutrients" element={<Nutrients />} />
-      <Route path="/detailnutrients" element={<DetailNutrients />} />
+      <Route path="/nutrients/:id" element={<DetailNutrients />} />
       <Route path="/detail" element={<DetailFood />} />
       <Route path="/mypage" element={<MyPage />} />
     </Routes>
