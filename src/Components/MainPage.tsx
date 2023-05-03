@@ -2,6 +2,8 @@ import styles from '../Styles/MainPage.module.css'
 import foodData from '../../public/food.json'
 import FoodList from './FoodList'
 import { useState } from 'react';
+import FilterFood from './FilterFood';
+import SearchFood from './SearchFood';
 
 const MainPage = () => {
 
@@ -45,15 +47,10 @@ const MainPage = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.searchFood}>
-        <input type='text' placeholder='오늘 먹고싶은 건강식은? ex) 연어'></input>
-        <button>검색하기</button>
+        <SearchFood />
       </div>
       <div className={styles.category}>
-        <ul>
-          <li>칼로리</li>
-          <li>종류</li>
-          <li>효능</li>
-        </ul>
+        <FilterFood />
       </div>
       <div className={styles.foodFullContainer}>
         <span>전체상품</span>
