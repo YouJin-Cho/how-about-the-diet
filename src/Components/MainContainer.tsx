@@ -21,7 +21,7 @@ const MainContainer = (props:MainContainerProps) => {
       <Route path="/" element={<MainPage />} />
       <Route path="/nutrients" element={<Nutrients />} />
       <Route path="/nutrients/:id" element={<DetailNutrients />} />
-      <Route path="/detail" element={<DetailFood />} />
+      <Route path="/detail/:id" element={<DetailFood />} />
       <Route path="/mypage" element={<MyPage />} />
     </Routes>
   )

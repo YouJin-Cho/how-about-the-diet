@@ -1,7 +1,7 @@
 .searchContainer {
   padding: 0px 100px;
   min-width: 1280px;
-  height: 1000px;
+  height: 1200px;
   display: flex;
   flex-direction: column;
   margin-top: 100px;
@@ -22,7 +22,7 @@
   display: flex;
   margin-bottom: 30px;
   max-width: 1200px;
-  max-height: 300px;
+  max-height: 600px;
 }
 
 .foodDesc > div > img {
@@ -43,7 +43,14 @@
 }
 
 .foodImgDesc > p {
-  min-height: 210px;
+  min-height: 20px;
+  max-width: 800px;
+  min-width: 800px;
+}
+
+.foodImgDesc > span:nth-child(1) {
+  display: block;
+  min-height: 80px;
   max-width: 800px;
   min-width: 800px;
 }

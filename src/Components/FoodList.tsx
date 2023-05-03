@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import styles from '../Styles/MainPage.module.css'
 
 export interface FoodListProps {
@@ -7,8 +8,16 @@ export interface FoodListProps {
 }
 
 const FoodList = (props: FoodListProps) => {
+
+  const navigate = useNavigate()
+
+  const handleFoodClick = () => {
+    const id = props.id
+    navigate(`/detail/${id}`)
+  }
+
   return (
-    <li className={styles.foodListLi}>
+    <li className={styles.foodListLi} onClick={handleFoodClick}>
       <section className={styles.imgSection}> 
         <img src={props.img} />
       </section>
