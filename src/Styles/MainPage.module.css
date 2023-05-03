@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding: 0px 100px;
   min-width: 1280px;
-  height: 1300px;
+  height: 3000px;
 }
 
 .searchFood {
@@ -79,7 +79,10 @@
 }
 
 .foodList {
-  border: 1px solid #00a554;
+  border: 3px solid #00a554;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
   padding: 20px 20px 70px 20px;
 }
 
@@ -95,8 +98,7 @@
 .foodListLi {
   width: 250px;
   height: 250px;
-  border: 1px solid;
-  border-radius: 16px;
+  border: none;
 }
 
 .imgSection {
@@ -109,9 +111,22 @@
   border-top-left-radius: 16px;
 }
 
+.imgSection > img {
+  width: 250px;
+  height: 220px;
+  border: none;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+}
+
 .descSection {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px 0px;
+  font-weight: bold;
+  color: #ffffff;
+  background: #00a554;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
 }

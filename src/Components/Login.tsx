@@ -3,12 +3,14 @@ import styles from '../Styles/Login.module.css'
 import { FcGoogle } from 'react-icons/fc'
 import { authService, firebaseInstance } from '../firebase'
 import firebase from 'firebase/compat/app'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [newAccount, setNewAccount] = useState(true)
+  const navigate = useNavigate()
   
   // email & password 작성
   const onChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +34,7 @@ const Login = () => {
         data = await authService.createUserWithEmailAndPassword(email, password)
       } else {
         data = await authService.signInWithEmailAndPassword(email, password)
+        navigate('/')
       }
       console.log(data)
     } catch (error) {
