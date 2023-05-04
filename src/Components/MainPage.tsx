@@ -8,8 +8,8 @@ import SearchFood from './SearchFood';
 const MainPage = () => {
 
   // 페이지네이션
-  const [currentPage, setCurrentPage] = useState(1);  // 현재 페이지 번호
-  const itemsPerPage = 8;  // 페이지당 보여줄 아이템 개수
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -43,6 +43,8 @@ const MainPage = () => {
     <button disabled>{'>'}</button>
   );
 
+  //
+
 
   return (
     <div className={styles.mainContainer}>
@@ -50,22 +52,20 @@ const MainPage = () => {
         <SearchFood />
       </div>
       <div className={styles.category}>
-        <FilterFood />
+        <FilterFood/>
       </div>
       <div className={styles.foodFullContainer}>
         <span>전체상품</span>
         <div className={styles.foodList}>
           <ul>
-            {
-              currentItems.map((food) => (
-                <FoodList
-                  key={food.id}
-                  id={food.id}
-                  title={food.title}
-                  img={food.image}
-                  />
-              ))
-            }
+          {currentItems.map((food) => (
+            <FoodList
+              key={food.id}
+              id={food.id}
+              title={food.title}
+              img={food.image}
+            />
+          ))}
           </ul>
           <div>
             {prevButton}

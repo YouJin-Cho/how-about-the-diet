@@ -19,7 +19,7 @@ const SearchFood = () => {
   }, [searchTerm])
 
   // input창
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value)
   }
 
@@ -34,6 +34,18 @@ const SearchFood = () => {
     }
   }
 
+  // 검색 
+  const handleSearchClick = () => {
+    navigate(`/search/${searchTerm}`);
+    setSearchTerm('')
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearchClick();
+    }
+  }
+
   return (
     <>
       <input 
@@ -41,8 +53,9 @@ const SearchFood = () => {
         placeholder='오늘 먹고싶은 건강식은? ex) 연어'
         value={searchTerm}
         onChange={handleInputChange}
+        onKeyDown={handleKeyPress}
       ></input>
-      <button>검색하기</button>
+      <button onClick={handleSearchClick}>검색하기</button>
       {
         searchTerm !== "" && foodTitles.length > 0 && (
           <ul className={styles.searchUl}>

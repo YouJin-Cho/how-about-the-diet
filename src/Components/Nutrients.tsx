@@ -26,7 +26,6 @@ const Nutrients = () => {
   )
 }
 
-
 interface NutrientItemsProps {
   nutrient: {
     id: number

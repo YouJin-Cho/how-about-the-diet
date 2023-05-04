@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../Styles/MainPage.module.css'
+import foodData from '../../public/food.json'
 
 const FilterFood = () => {
 
@@ -11,6 +12,9 @@ const FilterFood = () => {
   const toggleTypeDropdown = () => setShowTypeDropdown(!showTypeDropdown);
   const toggleEffectDropdown = () => setShowEffectDropdown(!showEffectDropdown);
 
+  // 
+
+  
   return (
     <ul>
       <li>
@@ -19,7 +23,7 @@ const FilterFood = () => {
           <ul className={styles.dropDownUl}>
             <li>100 ~ 299</li>
             <li>300 ~ 499</li>
-            <li>500 ~ </li>
+            <li>500 ~</li>
           </ul>
         )}
       </li>
@@ -48,7 +52,6 @@ const FilterFood = () => {
         )}
       </li>
     </ul>
-  )
-}
-
+  );
+        }
 export default FilterFood

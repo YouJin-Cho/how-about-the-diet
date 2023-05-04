@@ -6,8 +6,7 @@ import DetailFood from "./DetailFood"
 import Nutrients from "./Nutrients"
 import DetailNutrients from "./DetailNutrients"
 import MyPage from "./MyPage"
-import nutrientData from '../../public/nutrient.json'
-
+import SearchFoodList from "./SearchFoodList"
 
 interface MainContainerProps {
   isLoggedIn: boolean
@@ -22,6 +21,7 @@ const MainContainer = (props:MainContainerProps) => {
       <Route path="/nutrients" element={<Nutrients />} />
       <Route path="/nutrients/:id" element={<DetailNutrients />} />
       <Route path="/detail/:id" element={<DetailFood />} />
+      <Route path="/search/:searchTerm" element={<SearchFoodList />} />
       <Route path="/mypage" element={<MyPage />} />
     </Routes>
   )
