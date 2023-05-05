@@ -1,0 +1,97 @@
+.filterFoodContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropDownContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+  padding: 0px;
+}
+
+.dropDownContainer > select {
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  padding: 12px 13px;
+  line-height: 16px;
+  appearance: none;
+}
+
+.foodListUl {
+  list-style: none;
+  min-width: 400px;
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  justify-items: center;
+  grid-gap: 10px
+}
+
+.foodListLi {
+  width: 250px;
+  height: 250px;
+  border: none;
+}
+
+.imgSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  border-bottom: 1px solid;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+}
+
+.imgSection > img {
+  width: 250px;
+  height: 220px;
+  border: none;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+}
+
+.descSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0px;
+  font-weight: bold;
+  color: #ffffff;
+  background: #00a554;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.pagination > ul {
+  list-style: none;
+  display: flex;
+}
+
+.pagination > ul > li {
+  margin: 0px 10px;
+}
+
+.pagination > ul > li > button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #00a554;
+}
+
+.pagination > ul > li > button:disabled {
+  background: #C4C4C4;
+}
+

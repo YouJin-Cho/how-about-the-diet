@@ -19,7 +19,9 @@ const SearchFoodList = () => {
   return (
     <>
       <div className={styles.mainContainer}>
+      <div className={styles.searchFood}>
         <SearchFood />
+      </div>
         <div className={styles.foodList}>
           <ul className={styles.foodListUl}>
             {filteredFood.map((food) => (
