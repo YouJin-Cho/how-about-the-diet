@@ -1,16 +1,31 @@
-import { FormEvent, SyntheticEvent, useState } from 'react'
+import { FormEvent, SyntheticEvent, useEffect, useState } from 'react'
 import styles from '../Styles/Login.module.css'
 import { FcGoogle } from 'react-icons/fc'
 import { authService, firebaseInstance } from '../firebase'
 import firebase from 'firebase/compat/app'
 import { useNavigate } from 'react-router-dom'
+import MainContainer from './MainContainer'
 
 const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [newAccount, setNewAccount] = useState(true)
+
+  const [init, setInit] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false) // 추가
   const navigate = useNavigate()
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true)
+      } else {
+        setIsLoggedIn(false)
+      }
+      setInit(true)
+    })
+  }, [])
   
   // email & password 작성
   const onChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,29 +80,38 @@ const Login = () => {
   }
 
   return (
-    <div className={styles.loginContainer}>
-      <div className={styles.loginBox}>
-        <button onClick={toggleAccount}>{newAccount ? '계정이 있다면? Click후, 로그인' : '계정이 없다면? Click후, 회원가입'}</button>
-        <div>
-          <form className={styles.idPassword} onSubmit={onSubmit}>
-            <div>
-              <span>이메일</span>
-              <input type='email' name='email' value={email} onChange={onChanged} placeholder='Email' required/>
-            </div>
-            <div>
-              <span>비밀번호</span>
-              <input type='password' name='password' value={password} onChange={onChanged} placeholder='Password' required/>
-            </div>
-            <input type='submit' value={newAccount ? '회원가입' : '로그인'} />
-          </form>
-        </div>
-        <div className={styles.snsLogin}>
-          <span>or</span>
-          <span>소셜로그인</span>
-          <FcGoogle name='google' className={styles.googleLogin} onClick={onSocialClick}/>
+    <>
+      {
+        init ? (
+          <MainContainer isLoggedIn={isLoggedIn} />
+        ) : (
+          'Loading...'
+        )
+      }
+      <div className={styles.loginContainer}>
+        <div className={styles.loginBox}>
+          <button onClick={toggleAccount}>{newAccount ? '계정이 있다면? Click후, 로그인' : '계정이 없다면? Click후, 회원가입'}</button>
+          <div>
+            <form className={styles.idPassword} onSubmit={onSubmit}>
+              <div>
+                <span>이메일</span>
+                <input type='email' name='email' value={email} onChange={onChanged} placeholder='Email' required/>
+              </div>
+              <div>
+                <span>비밀번호</span>
+                <input type='password' name='password' value={password} onChange={onChanged} placeholder='Password' required/>
+              </div>
+              <input type='submit' value={newAccount ? '회원가입' : '로그인'} />
+            </form>
+          </div>
+          <div className={styles.snsLogin}>
+            <span>or</span>
+            <span>소셜로그인</span>
+            <FcGoogle name='google' className={styles.googleLogin} onClick={onSocialClick}/>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -25,7 +25,7 @@ const SearchFoodList = () => {
         <div className={styles.foodList}>
           <ul className={styles.foodListUl}>
             {filteredFood.map((food) => (
-              <li className={styles.foodListLi} onClick={() => handleFoodClick(food.id)}>
+              <li className={styles.foodListLi} key={food.id} onClick={() => handleFoodClick(food.id)}>
                 <section className={styles.imgSection}> 
                   <img src={food.image} />
                 </section>

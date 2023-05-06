@@ -15,14 +15,23 @@ interface MainContainerProps {
 const MainContainer = (props:MainContainerProps) => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/registration" element={<Registration />} />
-      <Route path="/" element={<MainPage />} />
-      <Route path="/nutrients" element={<Nutrients />} />
-      <Route path="/nutrients/:id" element={<DetailNutrients />} />
-      <Route path="/detail/:id" element={<DetailFood />} />
-      <Route path="/search/:searchTerm" element={<SearchFoodList />} />
-      <Route path="/mypage" element={<MyPage />} />
+      {
+        props.isLoggedIn ? (
+          <>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/nutrients" element={<Nutrients />} />
+            <Route path="/nutrients/:id" element={<DetailNutrients />} />
+            <Route path="/detail/:id" element={<DetailFood />} />
+            <Route path="/search/:searchTerm" element={<SearchFoodList />} />
+            <Route path="/mypage" element={<MyPage />} />
+          </>
+        ) : (
+          <>
+          </>
+        )
+      }
+      {/* <Route path="/login" element={<Login />} />
+      <Route path="/registration" element={<Registration />} /> */}
     </Routes>
   )
 }
