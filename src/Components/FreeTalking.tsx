@@ -1,13 +1,15 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import styles from '../Styles/FreeTalking.module.css'
-import { dbService } from '../firebase'
+import { dbService, storageService } from '../firebase'
 import { userObjProps, Talks } from '../Service/type'
 import Talking from './Talking'
+import { v4 as uuidv4 } from 'uuid';
 
 const FreeTalking = ({ userObj }:userObjProps) => {
 
   const [talk, setTalk] = useState('')
   const [talks, setTalks] = useState<Talks[] | null>(null)
+  const [photo, setPhoto] = useState('')
 
   useEffect(() => {
     dbService.collection('fTalks').onSnapshot((snap) => {
@@ -24,12 +26,22 @@ const FreeTalking = ({ userObj }:userObjProps) => {
   // form 전송
   const onSubmit = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    await dbService.collection('fTalks').add({
-      text: talk,
+    let photoUrl = ''
+
+    if(photo !== '') {
+      const phothoRef = storageService.ref().child(`${userObj?.uid}/${uuidv4()}`) // npm install uuid 
+      const response = await phothoRef.putString(photo, 'data_url')
+      photoUrl = await response.ref.getDownloadURL()
+    }
+    const newTalk = {
+      text: talk, 
       createdAt: Date.now(),
-      creatorId: userObj?.uid
-    })
+      creatorId: userObj?.uid,
+      photoUrl
+    }
+    await dbService.collection('fTalks').add(newTalk)
     setTalk('')
+    setPhoto('')
   }
 
   // input value 변경
@@ -40,12 +52,40 @@ const FreeTalking = ({ userObj }:userObjProps) => {
     setTalk(value)
   }
 
+  // 사진 업로드
+  const fileChange = (e: ChangeEvent<HTMLInputElement & { files: FileList }>) => {
+    const {
+      target: { files }
+    } = e
+
+    const theFile = files[0] // 사진 1개만
+    const reader = new FileReader()
+
+    reader.onloadend = (finishedEvent: ProgressEvent<FileReader>) => {
+      const result = finishedEvent.target?.result as string
+      setPhoto(result)
+    }
+    reader.readAsDataURL(theFile)
+  }
+
+  // 사진 미리보기 삭제
+  const clearPhotoClick = () => {
+    setPhoto('')
+  }
+
   return (
     <div className={styles.chattingContainer}>
       <div>
         <form onSubmit={onSubmit}>
           <input type='text' value={talk} onChange={onChange} placeholder='제발!!' maxLength={120} />
+          <input type='file' accept='image/*' onChange={fileChange}/>
           <input type='submit' value='talk' />
+          {photo && 
+            <div>
+              <img src={photo} width='50px' height='50px' />
+              <button onClick={clearPhotoClick}>삭제</button>
+            </div>
+          }
         </form>
         <div>
         {
@@ -56,6 +96,7 @@ const FreeTalking = ({ userObj }:userObjProps) => {
               key={item.id} 
               text={item.text} 
               id={item.id}
+              photoUpdate={item.photoUrl}
               userObj={userObj}
               isOwner={item.creatorId === userObj?.uid}/>
           ))

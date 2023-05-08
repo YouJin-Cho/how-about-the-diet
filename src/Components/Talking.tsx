@@ -1,5 +1,5 @@
 import firebase from "firebase/compat";
-import { dbService } from "../firebase";
+import { dbService, storageService } from "../firebase";
 import { FormEvent, useState } from "react";
 
 interface TalkingProps {
@@ -7,6 +7,7 @@ interface TalkingProps {
   id: string;
   text: string;
   isOwner: boolean;
+  photoUpdate: string;
 }
 
 const Talking = (props:TalkingProps) => {
@@ -20,6 +21,7 @@ const Talking = (props:TalkingProps) => {
     console.log(deleteOk)
     if(deleteOk) {
       await dbService.doc(`fTalks/${props.id}`).delete()
+      await storageService.refFromURL(props.photoUpdate).delete()
     }
   }
 
@@ -56,8 +58,11 @@ const Talking = (props:TalkingProps) => {
               <button onClick={editiongClick}>취소</button>
             </>
           ) : (
-            <>
+            <>  
               <p>{props.text}</p>
+              {
+                props.photoUpdate && <img src={props.photoUpdate} width='50px' height='50px' />
+              }
               {
                 props.isOwner && (
                   <>

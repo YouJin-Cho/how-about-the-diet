@@ -21,6 +21,7 @@ export interface Talks {
   text: string;
   createdAt: number;
   creatorId: string;
+  photoUrl: string;
 }
 
 export interface userObjProps {
