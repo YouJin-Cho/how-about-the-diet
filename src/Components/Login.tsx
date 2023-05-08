@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from '../Styles/Login.module.css'
 import { authService } from '../firebase'
-import firebase from 'firebase/compat/app'
 import MainContainer from './MainContainer'
 import Auth from './Auth'
 

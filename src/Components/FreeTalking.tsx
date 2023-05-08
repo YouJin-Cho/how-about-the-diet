@@ -52,11 +52,12 @@ const FreeTalking = ({ userObj }:userObjProps) => {
           talks === null 
           ? <div>Loading...</div>
           : talks.map((item) => (
-              <Talking 
-                key={item.id} 
-                text={item.text} 
-                userObj={userObj} 
-                isOwner={item.creatorId === userObj?.uid}/>
+            <Talking 
+              key={item.id} 
+              text={item.text} 
+              id={item.id}
+              userObj={userObj}
+              isOwner={item.creatorId === userObj?.uid}/>
           ))
         }
       </div>

@@ -5,7 +5,6 @@ import { authService, firebaseInstance } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 import firebase from 'firebase/compat/app'
 
-
 const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
