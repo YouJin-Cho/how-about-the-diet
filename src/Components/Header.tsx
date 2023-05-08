@@ -47,8 +47,8 @@ const Header = () => {
       </div>
       <div>
         <ul className={styles.mypageUl}>
-          <li>자유게시판</li>
-          <Link to='/mypage'><li>마이페이지</li></Link>
+          <Link to='/FreeTalking'><li className={styles.mypageLi}>자유게시판</li></Link>
+          <Link to='/mypage'><li className={styles.mypageLi}>마이페이지</li></Link>
         </ul>
       </div>
     </div>

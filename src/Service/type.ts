@@ -1,3 +1,5 @@
+import firebase from "firebase/compat";
+
 export interface filteredData {
   id: number;
   title: string;
@@ -13,3 +15,17 @@ export interface filteredData {
   kind: string;
   like: boolean;
 }[]
+
+export interface Talks {
+  id: string;
+  text: string;
+  createdAt: number;
+  creatorId: string;
+}
+
+export interface userObjProps {
+  isLoggedIn: boolean;
+  userObj: firebase.User | null;
+}
+
+
