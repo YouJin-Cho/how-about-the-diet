@@ -37,8 +37,8 @@ const MainContainer = ({ isLoggedIn }: userObjProps) => {
             <Route path="/nutrients/:id" element={<DetailNutrients />} />
             <Route path="/detail/:id" element={<DetailFood />} />
             <Route path="/search/:searchTerm" element={<SearchFoodList />} />
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/FreeTalking" element={<FreeTalking isLoggedIn={isLoggedIn} userObj={userObj}/>} />
+            <Route path="/mypage" element={<MyPage isLoggedIn={isLoggedIn} userObj={userObj} />} />
+            <Route path="/FreeTalking" element={<FreeTalking isLoggedIn={isLoggedIn} userObj={userObj} />} />
           </>
         ) : (
           <>

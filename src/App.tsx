@@ -31,7 +31,9 @@ function App() {
           <Login /> 
         ) : ( 
           <>
-            <MainContainer isLoggedIn={isLoggedIn} />
+            <MainContainer isLoggedIn={isLoggedIn} userObj={null} refreshUser={function (): void {
+                throw new Error('Function not implemented.')
+              } } />
           </>
         )
       }

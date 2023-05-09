@@ -8,6 +8,7 @@ import firebase from 'firebase/compat/app'
 const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const [newAccount, setNewAccount] = useState(true)
 
   const navigate = useNavigate()
@@ -17,8 +18,9 @@ const Auth = () => {
     const {
       target: { name, value },
     } = e
-
-    if (name === 'email') {
+    if (name === 'displayName') {
+      setDisplayName(value)
+    } else if (name === 'email') {
       setEmail(value)
     } else if (name === 'password') {
       setPassword(value)
@@ -32,11 +34,13 @@ const Auth = () => {
       let data
       if (newAccount) {
         data = await authService.createUserWithEmailAndPassword(email, password)
+        await data.user?.updateProfile({
+          displayName: displayName
+        })
       } else {
         data = await authService.signInWithEmailAndPassword(email, password)
         navigate('/')
       }
-      console.log(data)
     } catch (error) {
       const authError = error as firebase.auth.Error;
       if (authError.code === 'auth/email-already-in-use') {
@@ -68,6 +72,12 @@ const Auth = () => {
     <button onClick={toggleAccount}>{newAccount ? '계정이 있다면? Click후, 로그인' : '계정이 없다면? Click후, 회원가입'}</button>
     <div>
       <form className={styles.idPassword} onSubmit={onSubmit}>
+      {newAccount && (
+        <div>
+          <span>닉네임</span>
+          <input type='text' name='displayName' value={displayName} onChange={onChanged} placeholder='name' required/>
+        </div>
+      )}
         <div>
           <span>이메일</span>
           <input type='email' name='email' value={email} onChange={onChanged} placeholder='Email' required/>

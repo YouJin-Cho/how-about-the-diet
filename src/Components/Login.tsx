@@ -13,10 +13,8 @@ const Login = () => {
     authService.onAuthStateChanged(user => {
       if (user) {
         setIsLoggedIn(true)
-        // setUserObj(user)
       } else {
         setIsLoggedIn(false)
-        // setUserObj(null)
       }
       setInit(true)
     })
