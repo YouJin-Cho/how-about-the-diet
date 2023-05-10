@@ -24,16 +24,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header isLoggedIn={isLoggedIn}/>
       <ScrollToTop />
       {
         init && !isLoggedIn ? ( 
           <Login /> 
         ) : ( 
           <>
-            <MainContainer isLoggedIn={isLoggedIn} userObj={null} refreshUser={function (): void {
-                throw new Error('Function not implemented.')
-              } } />
+            <MainContainer isLoggedIn={isLoggedIn} userObj={null} />
           </>
         )
       }

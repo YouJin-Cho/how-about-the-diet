@@ -1,6 +1,4 @@
 import { Route, Routes } from "react-router-dom"
-import Login from "./Login"
-import Registration from "./Registration"
 import MainPage from "./MainPage"
 import DetailFood from "./DetailFood"
 import Nutrients from "./Nutrients"
@@ -12,7 +10,6 @@ import { userObjProps } from "../Service/type"
 import { useEffect, useState } from "react"
 import { authService } from "../firebase"
 import firebase from "../firebase"
-
 
 const MainContainer = ({ isLoggedIn }: userObjProps) => {
 
@@ -35,18 +32,16 @@ const MainContainer = ({ isLoggedIn }: userObjProps) => {
             <Route path="/" element={<MainPage />} />
             <Route path="/nutrients" element={<Nutrients />} />
             <Route path="/nutrients/:id" element={<DetailNutrients />} />
-            <Route path="/detail/:id" element={<DetailFood />} />
+            <Route path="/detail/:id" element={<DetailFood userObj={userObj}/>} />
             <Route path="/search/:searchTerm" element={<SearchFoodList />} />
-            <Route path="/mypage" element={<MyPage isLoggedIn={isLoggedIn} userObj={userObj} />} />
-            <Route path="/FreeTalking" element={<FreeTalking isLoggedIn={isLoggedIn} userObj={userObj} />} />
+            <Route path="/mypage" element={<MyPage userObj={userObj} />} />
+            <Route path="/FreeTalking" element={<FreeTalking userObj={userObj} />} />
           </>
         ) : (
           <>
           </>
         )
       }
-      {/* <Route path="/login" element={<Login />} />
-      <Route path="/registration" element={<Registration />} /> */}
     </Routes>
   )
 }

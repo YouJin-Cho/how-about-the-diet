@@ -4,6 +4,7 @@ import { dbService, storageService } from '../firebase'
 import { userObjProps, Talks } from '../Service/type'
 import Talking from './Talking'
 import { v4 as uuidv4 } from 'uuid';
+import { FaTrashAlt } from 'react-icons/fa'
 
 const FreeTalking = ({ userObj }:userObjProps) => {
 
@@ -12,12 +13,13 @@ const FreeTalking = ({ userObj }:userObjProps) => {
   const [photo, setPhoto] = useState('')
 
   useEffect(() => {
-    dbService.collection('fTalks').onSnapshot((snap) => {
+    dbService.collection('fTalks').orderBy('createdAt', 'asc').onSnapshot((snap) => {
       console.log('something')
       const talkArray = snap.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
       }) as Talks)
+      talkArray.sort((a, b) => a.createdAt - b.createdAt)
       setTalks(talkArray)
       console.log(talkArray)
     })
@@ -74,34 +76,40 @@ const FreeTalking = ({ userObj }:userObjProps) => {
   }
 
   return (
-    <div className={styles.chattingContainer}>
-      <div>
-        <form onSubmit={onSubmit}>
-          <input type='text' value={talk} onChange={onChange} placeholder='제발!!' maxLength={120} />
-          <input type='file' accept='image/*' onChange={fileChange}/>
-          <input type='submit' value='talk' />
-          {photo && 
+    <div className={styles.talkContainer}>
+      <div className={styles.talkingContainer}>
+        <h3>자유롭게 Talk!</h3>
+          <div className={styles.talkBox}>
             <div>
-              <img src={photo} width='50px' height='50px' />
-              <button onClick={clearPhotoClick}>삭제</button>
+              {
+                talks === null 
+                ? <div>Loading...</div>
+                : talks.map((item) => (
+                  <Talking 
+                    key={item.id} 
+                    text={item.text} 
+                    id={item.id}
+                    photoUpdate={item.photoUrl}
+                    userObj={userObj}
+                    isOwner={item.creatorId === userObj?.uid}/>
+                ))
+              }
             </div>
-          }
-        </form>
-        <div>
-        {
-          talks === null 
-          ? <div>Loading...</div>
-          : talks.map((item) => (
-            <Talking 
-              key={item.id} 
-              text={item.text} 
-              id={item.id}
-              photoUpdate={item.photoUrl}
-              userObj={userObj}
-              isOwner={item.creatorId === userObj?.uid}/>
-          ))
-        }
-      </div>
+          </div>
+          <form className={styles.photoForm} onSubmit={onSubmit}>
+            <div className={styles.photoTalk}>
+              <input className={styles.file} type='file' accept='image/*' onChange={fileChange}/>
+              <input className={styles.text} type='text' value={talk} onChange={onChange} placeholder='제발!!' maxLength={120} />
+              <input className={styles.submit} type='submit' value='전송' />
+            </div>
+              {photo && 
+                <div className={styles.prePhoto}>
+                  <span>preView</span>
+                  <img src={photo} width='50px' height='50px' />
+                  <button onClick={clearPhotoClick}><FaTrashAlt /></button>
+                </div>
+              }
+            </form>
       </div>
     </div>
   )

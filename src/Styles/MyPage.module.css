@@ -22,3 +22,10 @@
   border: none;
   border-radius: 10px;
 }
+
+.likeContainer {
+  width: 700px;
+  height: 500px;
+  padding: 10px;
+  border: 1px solid black;
+}

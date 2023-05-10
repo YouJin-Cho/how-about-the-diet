@@ -1,5 +1,180 @@
-.chattingContainer {
+.talkContainer {
   padding: 0px 100px;
   min-width: 1280px;
-  height: 500px;
+  height: 900px;
 }
+
+.talkingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+}
+
+.talkingContainer > h3 {
+  padding: 30px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.photoForm {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 70px;
+  height: 50px;
+  width: 700px;
+}
+
+.prePhoto {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  background: #C4C4C4;
+  border-radius: 5px;
+}
+
+.prePhoto > span {
+  display: block;
+  position: absolute;
+  font-weight: bold;
+  font-size: 15px;
+  top: -30%;
+  left: 0%;
+}
+
+.prePhoto > button {
+  position: absolute;
+  right: -25%;
+  bottom: 0%;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.talkBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 700px;
+  max-width: 700px;
+  min-height: 500px;
+  max-height: 500px;
+  padding: 50px;
+  border: 3px solid green;
+  overflow-y: auto;
+}
+
+.talkBox > form {
+  position: absolute;
+  bottom: 0px;
+  height: 100px;
+  margin-top: 50px;
+}
+
+.photoForm .file {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  height: 50px;
+}
+
+.photoForm .file > button {
+  width: 100px;
+}
+
+.photoForm .text {
+  width: 330px;
+  height: 50px;
+  padding: 10px;
+  border-left: 2px solid;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-right: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.photoForm .submit {
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+  border-left: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.photoTalk {
+  display: flex;
+  justify-content: flex-end;
+  background: #C4C4C4;
+  padding: 20px;
+  width: 700px;
+}
+
+.talkList {
+  position: relative;
+  width: 500px;
+  height: 100px;
+  padding: 20px;
+  background: #C4C4C4;
+  margin: 10px;
+  border-radius: 6px;
+}
+
+.editingText {
+  width: 300px;
+  height: 30px;
+  border: none;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-right: 8px;
+  border-radius: 3px;
+}
+
+.editingOk {
+  width: 40px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 3px;
+}
+
+.editingCancel {
+  width: 40px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+}
+
+.photoEditing {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  right: 2%;
+  top: 42%;
+}
+
+.btnContainer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.btnContainer > button {
+  width: 25px;
+  height: 25px;
+  border: none;
+  padding: 5px;
+  margin: 3px;
+  border-radius: 6px;
+}
+
+

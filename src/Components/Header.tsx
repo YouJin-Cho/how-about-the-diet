@@ -3,6 +3,8 @@ import styles from '../Styles/Header.module.css'
 import { GiHealthNormal } from 'react-icons/gi'
 import { useEffect, useState } from 'react'
 import cx from 'clsx'
+import { authService } from '../firebase'
+import { HeaderProps } from '../Service/type'
 
 // 헤더 항상 상위에 고정
 export const ScrollToTop = () => {
@@ -13,7 +15,7 @@ export const ScrollToTop = () => {
   return null;
 };
 
-const Header = () => {
+const Header = ({ isLoggedIn }: HeaderProps) => {
 
   // 헤더 고정
   const [isSticky, setIsSticky] = useState(false)
@@ -31,6 +33,9 @@ const Header = () => {
     }
   }, [])
 
+  // 닉네임
+  const displayName = authService.currentUser?.displayName
+
   return (
     <div className={isSticky ? cx(styles.headerContainer, styles.sticky) : styles.headerContainer}>
       <div className={styles.mainLogo}>
@@ -42,13 +47,18 @@ const Header = () => {
         </Link>
         <ul className={styles.headerUl}>
           <Link to='/nutrients'><li>영양소</li></Link>
-          <li>전체상품</li>
+          <Link to='/FreeTalking'><li className={styles.mypageLi}>요리공유방</li></Link>
         </ul>
       </div>
       <div>
         <ul className={styles.mypageUl}>
-          <Link to='/FreeTalking'><li className={styles.mypageLi}>자유게시판</li></Link>
-          <Link to='/mypage'><li className={styles.mypageLi}>마이페이지</li></Link>
+          {
+            isLoggedIn ? (
+              <Link to='/mypage'><li className={styles.mypageLi}>{displayName} 님</li></Link>
+            ) : (
+              <Link to='/login'><li className={styles.mypageLi}>로그인</li></Link>
+            )
+          }
         </ul>
       </div>
     </div>

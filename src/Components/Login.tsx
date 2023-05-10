@@ -4,7 +4,6 @@ import { authService } from '../firebase'
 import MainContainer from './MainContainer'
 import Auth from './Auth'
 
-
 const Login = () => {
   const [init, setInit] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false) // 추가

@@ -1,14 +1,9 @@
-import firebase from "firebase/compat";
 import { dbService, storageService } from "../firebase";
 import { FormEvent, useState } from "react";
-
-interface TalkingProps {
-  userObj: firebase.User | null;
-  id: string;
-  text: string;
-  isOwner: boolean;
-  photoUpdate: string;
-}
+import { TalkingProps } from "../Service/type";
+import styles from '../Styles/FreeTalking.module.css'
+import { FaTrashAlt } from 'react-icons/fa'
+import { BsFillPencilFill } from 'react-icons/bs'
 
 const Talking = (props:TalkingProps) => {
 
@@ -47,28 +42,29 @@ const Talking = (props:TalkingProps) => {
 
   return (
     <>
-      <div>
+      <div className={styles.talkList}>
         {
           editing ? (
             <>
+              {props.text}
               <form onSubmit={onSubmit}>
-                <input type="text" value={newTalk} onChange={onChange} required />
-                <input type="submit" value="확인" />
+                <input className={styles.editingText} type="text" value={newTalk} onChange={onChange} required />
+                <input className={styles.editingOk} type="submit" value="확인" />
+                <button className={styles.editingCancel} onClick={editiongClick}>취소</button>
               </form> 
-              <button onClick={editiongClick}>취소</button>
             </>
           ) : (
             <>  
               <p>{props.text}</p>
               {
-                props.photoUpdate && <img src={props.photoUpdate} width='50px' height='50px' />
+                props.photoUpdate && <img className={styles.photoEditing} src={props.photoUpdate} />
               }
               {
                 props.isOwner && (
-                  <>
-                    <button onClick={deleteClick}>삭제</button>
-                    <button onClick={editiongClick}>수정</button>
-                  </>
+                  <div className={styles.btnContainer}>
+                    <button className={styles.deleteBtn} onClick={deleteClick}><FaTrashAlt /></button>
+                    <button className={styles.updateBtn} onClick={editiongClick}><BsFillPencilFill /></button>
+                  </div>
                 )
               }
             </>

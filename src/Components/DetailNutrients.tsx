@@ -2,10 +2,6 @@ import styles from '../Styles/DetailNutrients.module.css'
 import nutrientData from '../../public/nutrient.json'
 import { useParams } from 'react-router-dom'
 
-export interface DetailNutrientsProps {
-  nutrientId?: number
-}
-
 const DetailNutrients = () => {
   const { id } = useParams<{ id: string }>()
   const nutrientId = parseInt(id || '0', 10)
@@ -16,7 +12,6 @@ const DetailNutrients = () => {
     return <div>해당 영양소를 찾을 수 없습니다.</div>;
   }
   
-
   return (
     <div className={styles.detailNuContainer}>
       <div className={styles.nutrientDesc}>

@@ -1,12 +1,10 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styles from '../Styles/MyPage.module.css'
 import { authService, dbService } from '../firebase'
-import { FormEvent, useEffect, useState } from 'react'
-import { userObjProps } from '../Service/type'
+import { useEffect, useState } from 'react'
+import { LikeFoods, userObjProps} from '../Service/type'
 
 const MyPage = ({ userObj }: userObjProps) => {
-
-  const [newName, setNewName] = useState(userObj?.displayName)
   const navigate = useNavigate()
 
   const onLogOutClick = () => {
@@ -14,35 +12,33 @@ const MyPage = ({ userObj }: userObjProps) => {
     navigate('/login')
   }
 
-  const getMyTalks = async() => { // -> 추가) 내가 작성한 talk 마이페이지에서 보여주기
-    const talks = await dbService
-    .collection('fTalks')
-    .where('creatorId', '==', userObj?.uid)
-    .orderBy('createdAt', 'desc') // index 생성
-    .get()
+  const [likeFoods, setLikeFoods] = useState<LikeFoods[]>([]);
 
-    console.log(talks.docs.map((doc) => doc.data()))
+  const fetchData = async() => {
+    if(userObj) {
+      const snapshot = await dbService
+      .collection(`likes/${userObj.uid}/foods`)
+      .where('like', '==', true)
+      .get()
+      const likeFoodsArray = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      })) as LikeFoods[]
+      setLikeFoods(likeFoodsArray)
+    }
   }
 
   useEffect(() => {
-    getMyTalks()
-  }, [])
+    fetchData()
+  }, [likeFoods])
 
-  const nameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { value }
-    } = e
-    setNewName(value)
-  }
-
-  const nameSubmit = async(e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if(userObj?.displayName !== newName) {
-      await userObj?.updateProfile({
-        displayName: newName
-      })
+  const deleteClick = async (foodId: string) => {
+    const deleteOk = confirm("찜리스트에서 삭제하시겠습니까?");
+    if (deleteOk) {
+      await dbService.doc(`likes/${userObj?.uid}/foods/${foodId}`).delete();
     }
-  }
+    setLikeFoods((prev) => prev.filter((food) => food.id !== foodId));
+  };
 
   return (
     <div className={styles.myPageContainer}>
@@ -50,7 +46,22 @@ const MyPage = ({ userObj }: userObjProps) => {
         <button onClick={onLogOutClick}>로그아웃</button>
       </div>
       <div>
-        <h3>{userObj?.displayName}의 myPage</h3>
+        <h3>{userObj?.displayName}의 찜리스트</h3>
+        <div>
+        {likeFoods.length === 0 ? (
+          <p>찜한 음식이 없습니다.</p>
+        ) : (
+          <ul>
+            {likeFoods.map((food) => (
+              <li key={food.id}>
+                <p>{food.title}</p>
+                <img src={food.image} width='50px' height='50px'/>
+                <button onClick={()=>deleteClick(food.id)}>삭제</button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
       </div>
     </div>
   )

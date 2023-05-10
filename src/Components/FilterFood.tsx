@@ -1,14 +1,9 @@
 import styles from '../Styles/FilterFood.module.css'
 import { useEffect, useState } from 'react'
 import foodData from '../../public/food.json'
-import { filteredData } from '../Service/type'
+import { categoryTypes, filteredData, userObjProps } from '../Service/type'
 import { FreshOrMelas, efficacys, kcals } from '../Service/FilterFoodDropdown'
 import { useNavigate } from 'react-router-dom'
-
-interface categoryTypes {
-  name: string
-  state: string
-}
 
 const FilterFood = () => {
   const [freshOrMeals, setFreshOrMeals] = useState<categoryTypes>(FreshOrMelas[0])
