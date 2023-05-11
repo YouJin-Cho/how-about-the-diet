@@ -13,7 +13,7 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .logOutBtn > button {
@@ -24,8 +24,52 @@
 }
 
 .likeContainer {
-  width: 700px;
-  height: 500px;
+  width: 1000px;
+  min-height: 700px;
+  max-height: 1000px;
   padding: 10px;
   border: 1px solid black;
+  margin-top: 30px;
+}
+
+.likeUl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  column-gap: 20px;
+  row-gap: 40px;
+  list-style: none;
+  padding: 20px;
+}
+
+.likeUl > li {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.likeUl > li > p {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  padding: 10px;
+}
+
+.likeUl > li > img {
+  width: 300px;
+  height: 250px;
+}
+
+.likeIcon {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 50%;
+  color: red;
+  background: #ffffff;
+  top: 5%;
+  right: 5%;
 }

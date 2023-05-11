@@ -1,9 +1,10 @@
 .searchContainer {
   padding: 0px 100px;
   min-width: 1280px;
-  height: 1200px;
+  height: 850px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 100px;
 }
 
@@ -34,6 +35,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width: 740px;
   margin-left: 40px;
 }
 
@@ -44,8 +46,8 @@
 
 .foodImgDesc > p {
   min-height: 20px;
-  max-width: 800px;
-  min-width: 800px;
+  max-width: 740px;
+  min-width: 740px;
 }
 
 .foodImgDesc > span:nth-child(1) {
@@ -53,24 +55,6 @@
   min-height: 80px;
   max-width: 800px;
   min-width: 800px;
-}
-
-.likeSection {
-  display: flex;
-}
-
-.likeSection > span {
-  display: block;
-  width: 120px;
-  padding: 13px 7px;
-  margin-right: 10px;
-  margin-top: 20px;
-  border-radius: 16px;
-  text-align: center;
-  font-weight: bold;
-  color: #ffffff;
-  background: #00a554;
-  cursor: pointer;
 }
 
 .cookingDesc {

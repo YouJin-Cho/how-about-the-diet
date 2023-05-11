@@ -1,4 +1,3 @@
-import { userObjProps } from '../Service/type';
 import styles from '../Styles/MainPage.module.css'
 import FilterFood from './FilterFood';
 import SearchFood from './SearchFood';

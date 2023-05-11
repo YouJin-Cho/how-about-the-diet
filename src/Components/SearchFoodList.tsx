@@ -24,6 +24,14 @@ const SearchFoodList = () => {
       </div>
         <div className={styles.foodList}>
           <ul className={styles.foodListUl}>
+            {
+              filteredFood.length === 0 && (
+                <>
+                  <p></p>
+                  <p className={styles.noFood}>검색한 음식이 없습니다.. 🤦‍♀️</p>
+                </>
+              )
+            }
             {filteredFood.map((food) => (
               <li className={styles.foodListLi} key={food.id} onClick={() => handleFoodClick(food.id)}>
                 <section className={styles.imgSection}> 

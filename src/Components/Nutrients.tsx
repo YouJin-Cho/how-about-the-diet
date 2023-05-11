@@ -1,8 +1,8 @@
 import styels from '../Styles/Nutrients.module.css'
 import nutrientData from '../../public/nutrient.json'
 import { useState } from 'react'
-import DetailNutrients from './DetailNutrients'
 import { useNavigate } from 'react-router-dom'
+import { NutrientItemsProps } from '../Service/type'
 
 const Nutrients = () => {
 
@@ -24,15 +24,6 @@ const Nutrients = () => {
       </div>
     </div>
   )
-}
-
-interface NutrientItemsProps {
-  nutrient: {
-    id: number
-    title: string
-    image: string
-  }
-  onClick: (id: number) => void
 }
 
 const NutrientItems = ({ nutrient, onClick }: NutrientItemsProps) => {

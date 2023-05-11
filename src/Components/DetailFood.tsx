@@ -17,25 +17,20 @@ const DetailFood = ({ userObj }: userObjProps) => {
 
   return (
     <div className={styles.searchContainer}>
-      <div className={styles.foodTitle}>
-        <span>{food.title}</span>
-      </div>
       <div className={styles.foodDesc}>
         <FoodLike userObj={userObj}/>
         <div className={styles.foodImgDesc}>
+          <div>
+            <div className={styles.foodTitle}>
+              <span>{food.title}</span>
+            </div>
+          </div>
           <p>상품 특징</p>
           <span>{food.desc}</span>
           <p>상품 영양소</p>
           <span>{food.nutrients}</span>
           <p>상품 효능</p>
           <span>{food.efficacy}</span>
-          <div>
-            <hr />
-            <div className={styles.likeSection}>
-              <span>찜하기</span>
-              <span>찜리스트 이동</span>
-            </div>
-          </div>
         </div>
       </div>
       <div className={styles.cookingDesc}>

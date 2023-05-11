@@ -14,14 +14,12 @@ const FreeTalking = ({ userObj }:userObjProps) => {
 
   useEffect(() => {
     dbService.collection('fTalks').orderBy('createdAt', 'asc').onSnapshot((snap) => {
-      console.log('something')
       const talkArray = snap.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
       }) as Talks)
       talkArray.sort((a, b) => a.createdAt - b.createdAt)
       setTalks(talkArray)
-      console.log(talkArray)
     })
   }, [])
   

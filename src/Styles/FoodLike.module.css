@@ -1,0 +1,15 @@
+.foodImg {
+  position: relative;
+}
+
+.heartIcon {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 50%;
+  color: red;
+  background: #ffffff;
+  top: 5%;
+  right: 5%;
+}

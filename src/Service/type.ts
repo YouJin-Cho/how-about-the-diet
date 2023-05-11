@@ -61,3 +61,12 @@ export interface categoryTypes {
   name: string
   state: string
 }
+
+export interface NutrientItemsProps {
+  nutrient: {
+    id: number
+    title: string
+    image: string
+  }
+  onClick: (id: number) => void
+}

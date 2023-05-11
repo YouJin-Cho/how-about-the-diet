@@ -1,8 +1,9 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from '../Styles/MyPage.module.css'
 import { authService, dbService } from '../firebase'
 import { useEffect, useState } from 'react'
 import { LikeFoods, userObjProps} from '../Service/type'
+import { AiFillHeart } from 'react-icons/ai'
 
 const MyPage = ({ userObj }: userObjProps) => {
   const navigate = useNavigate()
@@ -16,11 +17,10 @@ const MyPage = ({ userObj }: userObjProps) => {
 
   const fetchData = async() => {
     if(userObj) {
-      const snapshot = await dbService
+      const snapcatch = await dbService // dbLikes?
       .collection(`likes/${userObj.uid}/foods`)
-      .where('like', '==', true)
       .get()
-      const likeFoodsArray = snapshot.docs.map((doc) => ({
+      const likeFoodsArray = snapcatch.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id
       })) as LikeFoods[]
@@ -30,14 +30,15 @@ const MyPage = ({ userObj }: userObjProps) => {
 
   useEffect(() => {
     fetchData()
-  }, [likeFoods])
+  }, [])
 
   const deleteClick = async (foodId: string) => {
     const deleteOk = confirm("찜리스트에서 삭제하시겠습니까?");
     if (deleteOk) {
       await dbService.doc(`likes/${userObj?.uid}/foods/${foodId}`).delete();
+      setLikeFoods((prev) => prev.filter((food) => food.id !== foodId));
+    } else {
     }
-    setLikeFoods((prev) => prev.filter((food) => food.id !== foodId));
   };
 
   return (
@@ -45,18 +46,18 @@ const MyPage = ({ userObj }: userObjProps) => {
       <div className={styles.logOutBtn}>
         <button onClick={onLogOutClick}>로그아웃</button>
       </div>
-      <div>
-        <h3>{userObj?.displayName}의 찜리스트</h3>
+      <h3>{userObj?.displayName}의 찜리스트</h3>
+      <div className={styles.likeContainer}>
         <div>
         {likeFoods.length === 0 ? (
           <p>찜한 음식이 없습니다.</p>
         ) : (
-          <ul>
+          <ul className={styles.likeUl}>
             {likeFoods.map((food) => (
               <li key={food.id}>
-                <p>{food.title}</p>
                 <img src={food.image} width='50px' height='50px'/>
-                <button onClick={()=>deleteClick(food.id)}>삭제</button>
+                <p>{food.title}</p>
+                <AiFillHeart className={styles.likeIcon} onClick={()=>deleteClick(food.id)} />
               </li>
             ))}
           </ul>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { userObjProps } from "../Service/type";
 import { dbService } from "../firebase";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import foodData from '../../public/food.json'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { LikeFoods } from "../Service/type";
+import styles from '../Styles/FoodLike.module.css'
 
 const FoodLike = ({ userObj }:userObjProps) => {
 
@@ -12,6 +13,8 @@ const FoodLike = ({ userObj }:userObjProps) => {
   const foodId = parseInt(id || '0', 10)
   const food = foodData.find((food) => food.id === foodId);
   const dbLikes = dbService.collection('likes');
+
+  const navigate = useNavigate()
 
   // 찜하기
   const [like, setLike] = useState(false);
@@ -26,25 +29,30 @@ const FoodLike = ({ userObj }:userObjProps) => {
       }
     }
     fetchData();
-  }, [foodId, userObj?.uid]);
+  }, []); // foodId, userObj?.uid
 
   const foodLikeClick = () => {
     if (!userObj) return;
     const likeRef = dbLikes.doc(userObj.uid).collection('foods').doc(`${foodId}`);
     likeRef.set({
-      ...food,
+      id: food?.id,
+      title: food?.title,
+      image: food?.image,
       like: !like
     });
     setLike(!like);
+    const goMyPage = confirm("마이페이지에서 상품을 확인하시겠습니까?")
+    if(goMyPage) {
+      navigate('/mypage')
+    }
   }
   
   return (
-    <div>
-      {food && <img src={food.image} width='50px' height='50px'/>}
+    <div className={styles.foodImg}>
       {like ? (
-        <AiFillHeart onClick={foodLikeClick} />
+        <AiFillHeart className={styles.heartIcon} onClick={foodLikeClick} />
       ) : (
-        <AiOutlineHeart onClick={foodLikeClick} />
+        <AiOutlineHeart className={styles.heartIcon} onClick={foodLikeClick} />
       )}
     </div>
   )

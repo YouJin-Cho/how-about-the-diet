@@ -5,7 +5,8 @@
   margin: 0 auto;
   padding: 0px 100px;
   min-width: 1280px;
-  height: 3000px;
+  min-height: auto;
+  max-height: 1700px;
 }
 
 .searchFood {
@@ -103,4 +104,12 @@
   background: #00a554;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
+}
+
+.noFood {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 25px;
 }
