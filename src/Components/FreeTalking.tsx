@@ -104,14 +104,14 @@ const FreeTalking = ({ userObj }:userObjProps) => {
               <input className={styles.text} type='text' value={talk} onChange={onChange} placeholder='제발!!' maxLength={120} />
               <input className={styles.submit} type='submit' value='전송' />
             </div>
-              {photo && 
-                <div className={styles.prePhoto}>
-                  <span>preView</span>
-                  <img src={photo} width='50px' height='50px' />
-                  <button onClick={clearPhotoClick}><FaTrashAlt /></button>
-                </div>
-              }
-            </form>
+            {photo && 
+              <div className={styles.prePhoto}>
+                <span>preView</span>
+                <img src={photo} width='50px' height='50px' />
+                <button onClick={clearPhotoClick}><FaTrashAlt /></button>
+              </div>
+            }
+          </form>
       </div>
     </div>
   )

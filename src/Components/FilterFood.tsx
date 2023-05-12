@@ -1,7 +1,7 @@
 import styles from '../Styles/FilterFood.module.css'
 import { useEffect, useState } from 'react'
 import foodData from '../../public/food.json'
-import { categoryTypes, filteredData, userObjProps } from '../Service/type'
+import { categoryTypes, filteredData } from '../Service/type'
 import { FreshOrMelas, efficacys, kcals } from '../Service/FilterFoodDropdown'
 import { useNavigate } from 'react-router-dom'
 

@@ -1,12 +1,12 @@
 import styles from '../Styles/DetailNutrients.module.css'
+import { useParams } from 'react-router-dom';
 import nutrientData from '../../public/nutrient.json'
-import { useParams } from 'react-router-dom'
 
 const DetailNutrients = () => {
-  const { id } = useParams<{ id: string }>()
-  const nutrientId = parseInt(id || '0', 10)
-  const nutrient = nutrientData.find((nutrient) => nutrient.id === nutrientId);
 
+  const { id } = useParams<{ id: string }>()
+  const foodId = parseInt(id || '0', 10)
+  const nutrient = nutrientData.find((nutrient) => nutrient.id === foodId);
 
   if (!nutrient) {
     return <div>해당 영양소를 찾을 수 없습니다.</div>;

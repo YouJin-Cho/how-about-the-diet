@@ -16,11 +16,11 @@ const MainContainer = ({ isLoggedIn }: userObjProps) => {
   const [userObj, setUserObj] = useState<firebase.User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = authService.onAuthStateChanged((user) => {
+    const authChange = authService.onAuthStateChanged((user) => {
       setUserObj(user)
     });
     return () => {
-      unsubscribe();
+      authChange();
     };
   }, []);
 

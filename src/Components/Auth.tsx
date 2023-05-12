@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react'
 import styles from '../Styles/Login.module.css'
-import { FcGoogle } from 'react-icons/fc'
-import { authService, firebaseInstance } from '../firebase'
+import { authService } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 import firebase from 'firebase/compat/app'
+import SocialLogin from './SocialLogin'
 
 const Auth = () => {
   const [email, setEmail] = useState('')
@@ -37,12 +37,18 @@ const Auth = () => {
         await data.user?.updateProfile({
           displayName: displayName
         })
+        authService.signOut()
+        navigate('/login')
+        alert('식단어때에 회원가입 되셨습니다. 로그인 해주세요 :)')
+        return
       } else {
         data = await authService.signInWithEmailAndPassword(email, password)
+        alert('식단어때에 로그인 되었습니다.')
+        setNewAccount(false)
         navigate('/')
       }
     } catch (error) {
-      const authError = error as firebase.auth.Error;
+      const authError = error as firebase.auth.Error
       if (authError.code === 'auth/email-already-in-use') {
         alert('이미 가입된 이메일입니다.')
       } else if (authError.code === 'auth/weak-password') {
@@ -59,12 +65,6 @@ const Auth = () => {
   // 버튼 변경(로그인 & 회원가입)
   const toggleAccount = () => {
     setNewAccount((prev) => !prev)
-  }
-
-  // 구글 로그인
-  const onSocialClick = async () => {
-    let provider = new firebaseInstance.auth.GoogleAuthProvider()
-    await authService.signInWithPopup(provider)
   }
 
   return (
@@ -89,11 +89,7 @@ const Auth = () => {
         <input type='submit' value={newAccount ? '회원가입' : '로그인'} />
       </form>
     </div>
-    <div className={styles.snsLogin}>
-      <span>or</span>
-      <span>소셜로그인</span>
-      <FcGoogle name='google' className={styles.googleLogin} onClick={onSocialClick}/>
-    </div>
+    <SocialLogin />
     </>
   )
 }

@@ -1,16 +1,15 @@
-import { useParams } from 'react-router-dom';
 import styles from '../Styles/DetailFood.module.css'
-import foodData from '../../public/food.json'
 import FoodLike from '../Common/FoodLike';
 import { userObjProps } from '../Service/type';
+import { useParams } from 'react-router-dom';
+import foodData from '../../public/food.json'
 
 const DetailFood = ({ userObj }: userObjProps) => {
-
+  
   const { id } = useParams<{ id: string }>()
   const foodId = parseInt(id || '0', 10)
   const food = foodData.find((food) => food.id === foodId);
   
-
   if (!food) {
     return <div>해당 음식을 찾을 수 없습니다.</div>;
   }

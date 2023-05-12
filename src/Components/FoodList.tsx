@@ -11,6 +11,7 @@ const FoodList = (props: FoodListProps) => {
 
   const navigate = useNavigate()
 
+  // 상세페이지 이동
   const handleFoodClick = () => {
     const id = props.id
     navigate(`/detail/${id}`)

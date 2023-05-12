@@ -62,25 +62,25 @@ const MyPage = ({ userObj }: userObjProps) => {
       <h3>{userObj?.displayName}의 찜리스트</h3>
       <div className={styles.likeContainer}>
         <div className={styles.likeBox}>
-        {likeFoods.length === 0 ? (
-          <p>찜한 음식이 없습니다.</p>
-        ) : (
-          <>
-            <div className={styles.allDelete}>
-              <AiFillHeart className={styles.allDeleteHeart} onClick={deleteAllClick}>전체삭제</AiFillHeart>
-            </div>
-            <ul className={styles.likeUl}>
-              {likeFoods.map((food) => (
-                <li key={food.id}>
-                  <img src={food.image} width='50px' height='50px'/>
-                  <p>{food.title}</p>
-                  <AiFillHeart className={styles.likeIcon} onClick={()=>deleteClick(food.id)} />
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-      </div>
+          {likeFoods.length === 0 ? (
+            <p>찜한 음식이 없습니다.</p>
+          ) : (
+            <>
+              <div className={styles.allDelete}>
+                <AiFillHeart className={styles.allDeleteHeart} onClick={deleteAllClick}>전체삭제</AiFillHeart>
+              </div>
+              <ul className={styles.likeUl}>
+                {likeFoods.map((food) => (
+                  <li key={food.id}>
+                    <img src={food.image} width='50px' height='50px'/>
+                    <p>{food.title}</p>
+                    <AiFillHeart className={styles.likeIcon} onClick={()=>deleteClick(food.id)} />
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
       </div>
     </div>
   )

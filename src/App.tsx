@@ -1,11 +1,12 @@
 import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import Header, { ScrollToTop } from './Components/Header'
-import Footer from './Components/Footer'
 import MainContainer from './Components/MainContainer'
 import { useEffect, useState } from 'react'
 import { authService } from './firebase'
 import Login from './Components/Login'
+import styles from './Styles/MainContaier.module.css'
+import Footer from './Components/Footer'
 
 function App() {
   const [init, setInit] = useState(false)
@@ -30,9 +31,9 @@ function App() {
         init && !isLoggedIn ? ( 
           <Login /> 
         ) : ( 
-          <>
+          <div className={styles.MainContaier}>
             <MainContainer isLoggedIn={isLoggedIn} userObj={null} />
-          </>
+          </div>
         )
       }
       <Footer />

@@ -19,9 +19,9 @@ const SearchFoodList = () => {
   return (
     <>
       <div className={styles.mainContainer}>
-      <div className={styles.searchFood}>
-        <SearchFood />
-      </div>
+        <div className={styles.searchFood}>
+          <SearchFood />
+        </div>
         <div className={styles.foodList}>
           <ul className={styles.foodListUl}>
             {
@@ -48,6 +48,5 @@ const SearchFoodList = () => {
     </>
   )
 }
-
 
 export default SearchFoodList

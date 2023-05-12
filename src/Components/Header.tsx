@@ -17,6 +17,8 @@ export const ScrollToTop = () => {
 
 const Header = ({ isLoggedIn }: HeaderProps) => {
 
+  const [displayName, setDisplayName] = useState(authService.currentUser?.displayName)
+
   // 헤더 고정
   const [isSticky, setIsSticky] = useState(false)
 
@@ -34,7 +36,13 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
   }, [])
 
   // 닉네임
-  const displayName = authService.currentUser?.displayName
+
+  useEffect(() => {
+    const unsubscribe = authService.onAuthStateChanged((user) => {
+      setDisplayName(user?.displayName)
+    })
+    return unsubscribe
+  }, [])
 
   return (
     <div className={isSticky ? cx(styles.headerContainer, styles.sticky) : styles.headerContainer}>
