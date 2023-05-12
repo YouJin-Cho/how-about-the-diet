@@ -71,6 +71,10 @@ const FreeTalking = ({ userObj }:userObjProps) => {
   // 사진 미리보기 삭제
   const clearPhotoClick = () => {
     setPhoto('')
+    const fileInput = document.querySelector('input[type=file]') as HTMLInputElement
+    if (fileInput) {
+      fileInput.value = ''
+    }
   }
 
   return (

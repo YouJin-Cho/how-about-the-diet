@@ -34,21 +34,33 @@ const FoodLike = ({ userObj }:userObjProps) => {
   const foodLikeClick = () => {
     if (!userObj) return;
     const likeRef = dbLikes.doc(userObj.uid).collection('foods').doc(`${foodId}`);
-    likeRef.set({
-      id: food?.id,
-      title: food?.title,
-      image: food?.image,
-      like: !like
-    });
-    setLike(!like);
-    const goMyPage = confirm("마이페이지에서 상품을 확인하시겠습니까?")
-    if(goMyPage) {
-      navigate('/mypage')
+    if (like) {
+      const deleteOk = confirm("해당 음식을 찜리스트에서 삭제하시겠습니까?");
+      if (deleteOk) {
+        likeRef.delete();
+        setLike(false);
+      }
+    } else {
+      const addOk = confirm("해당 음식을 찜리스트에 추가하시겠습니까?");
+      if (addOk) {
+        likeRef.set({
+          id: food?.id,
+          title: food?.title,
+          image: food?.image,
+          like: true,
+        });
+        setLike(true);
+        const goMyPage = confirm("마이페이지에서 상품을 확인하시겠습니까?");
+        if (goMyPage) {
+          navigate('/mypage');
+        }
+      }
     }
-  }
+  };
   
   return (
     <div className={styles.foodImg}>
+      {food && <img src={food.image} width='50px' height='50px'/>}
       {like ? (
         <AiFillHeart className={styles.heartIcon} onClick={foodLikeClick} />
       ) : (
