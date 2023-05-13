@@ -28,18 +28,18 @@ const SearchFoodList = () => {
               filteredFood.length === 0 && (
                 <>
                   <p></p>
-                  <p className={styles.noFood}>검색한 음식이 없습니다.. 🤦‍♀️</p>
+                  <p className={styles.noFood}>검색한 음식이 없습니다.. 🤦‍♀️ <br/> 연어는 어떠세요? 💁‍♀️</p>
                 </>
               )
             }
             {filteredFood.map((food) => (
               <li className={styles.foodListLi} key={food.id} onClick={() => handleFoodClick(food.id)}>
-                <section className={styles.imgSection}> 
+                <div className={styles.imgSection}> 
                   <img src={food.image} />
-                </section>
-                <section className={styles.descSection}>
-                  <p>{food.title}</p>
-                </section>
+                </div>
+                <div className={styles.descSection}>
+                  <p>{`" ${food.title} "`} 어떠신가요? ☺️</p>
+                </div>
               </li>
             ))}
           </ul>

@@ -4,6 +4,7 @@ import foodData from '../../public/food.json'
 import { categoryTypes, filteredData } from '../Service/type'
 import { FreshOrMelas, efficacys, kcals } from '../Service/FilterFoodDropdown'
 import { useNavigate } from 'react-router-dom'
+import "daisyui/dist/styled.css";
 
 const FilterFood = () => {
   const [freshOrMeals, setFreshOrMeals] = useState<categoryTypes>(FreshOrMelas[0])
@@ -105,17 +106,17 @@ const FilterFood = () => {
   return (
     <div className={styles.filterFoodContainer}>
       <div className={styles.dropDownContainer}>
-        <select onChange={handleFreshOrMealsChange} value={freshOrMeals.state}>
+        <select className="select select-success w-full max-w-xs" onChange={handleFreshOrMealsChange} value={freshOrMeals.state}>
           {FreshOrMelas.map((fm) => (
             <option className={styles.dropdownOption} key={fm.state} value={fm.state}>{fm.name}</option>
           ))}
         </select>
-        <select onChange={handleEfficacyChange} value={efficacyFilter}>
+        <select className="select select-success w-full max-w-xs" onChange={handleEfficacyChange} value={efficacyFilter}>
           {efficacys.map((efficacy) => (
             <option key={efficacy.state} value={efficacy.state}>{efficacy.name}</option>
           ))}
         </select>
-        <select onChange={handleKcalChange} value={kcalFilter}>
+        <select className="select select-success w-full max-w-xs" onChange={handleKcalChange} value={kcalFilter}>
           {kcals.map((kcal) => (
             <option key={kcal.state} value={kcal.state}>{kcal.name}</option>
           ))}
@@ -139,7 +140,8 @@ const FilterFood = () => {
           <ul>
             {Array.from({ length: totalPages }, (_, index) => (
               <li key={index}>
-                <button
+                <button 
+                  className="btn btn-xs"
                   onClick={() => handlePageChange(index + 1)}
                   disabled={currentPage === index + 1}>
                   {index + 1}

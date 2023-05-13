@@ -30,8 +30,7 @@
   position: absolute;
   top: 10%;
   left: 5%;
-  background: #C4C4C4;
-  border-radius: 5px;
+  color: #ffffff;
 }
 
 .prePhoto > span {
@@ -41,6 +40,11 @@
   font-size: 15px;
   top: -30%;
   left: 0%;
+  color: #ffffff;
+}
+
+.prePhoto > img {
+  border-radius: 20%;
 }
 
 .prePhoto > button {
@@ -62,7 +66,8 @@
   min-height: 500px;
   max-height: 500px;
   padding: 50px;
-  border: 3px solid green;
+  border: 3px solid #01c466;
+  border-radius: 16px;
   overflow-y: auto;
 }
 
@@ -88,9 +93,9 @@
   width: 330px;
   height: 50px;
   padding: 10px;
-  border-left: 2px solid;
-  border-top: 2px solid;
-  border-bottom: 2px solid;
+  border-left: 2px solid  #02a154;
+  border-top: 2px solid #02a154;
+  border-bottom: 2px solid #02a154;
   border-right: 0px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -101,19 +106,27 @@
   height: 50px;
   padding: 0px;
   border-left: 0px;
-  border-top: 2px solid;
-  border-bottom: 2px solid;
-  border-right: 2px solid;
+  border-top: 2px solid #02a154;
+  border-bottom: 2px solid #02a154;
+  border-right: 2px solid #02a154;
   border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;  
+  transition: background 0.2s ease-in-out;
+}
+
+.photoForm .submit:hover {
+  background: #02a154;
+  color: #ffffff;
+
 }
 
 .photoTalk {
   display: flex;
   justify-content: flex-end;
-  background: #C4C4C4;
+  background: #00d06b;
   padding: 20px;
   width: 700px;
+  border-radius: 10px;
 }
 
 .talkList {
@@ -121,9 +134,18 @@
   width: 500px;
   height: 100px;
   padding: 20px;
-  background: #C4C4C4;
+  background: #01c466;
   margin: 10px;
   border-radius: 6px;
+}
+
+.talkList > p {
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+  max-width: 250px;
+  max-height: 50px;
+  overflow-y: auto;
 }
 
 .editingText {
@@ -142,6 +164,13 @@
   border: none;
   border-radius: 3px;
   margin-right: 3px;
+  background: #ffffff;
+  transition: background 0.2s ease-in-out;
+}
+
+.editingOk:hover {
+  background: #02a154;
+  color: #ffffff;
 }
 
 .editingCancel {
@@ -149,6 +178,13 @@
   height: 30px;
   border: none;
   border-radius: 3px;
+  background: #ffffff;
+  transition: background 0.2s ease-in-out;
+}
+
+.editingCancel:hover {
+  background: #02a154;
+  color: #ffffff;
 }
 
 .photoEditing {
@@ -156,8 +192,14 @@
   height: 50px;
   border-radius: 50%;
   position: absolute;
-  right: 2%;
+  right: 3%;
   top: 42%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.photoEditing:hover {
+  transform: scale(2.5);
+  z-index: 50;
 }
 
 .btnContainer {
@@ -169,12 +211,18 @@
 }
 
 .btnContainer > button {
-  width: 25px;
-  height: 25px;
-  border: none;
-  padding: 5px;
+  width: 30px;
+  height: 30px;
   margin: 3px;
+  border: 1px solid #01c466;
+  background: #ffffff;
   border-radius: 6px;
+  transition: background 0.2s ease-in-out;
+}
+
+.btnContainer > button:hover {
+  background: #02a154;
+  color: #ffffff;
 }
 
 

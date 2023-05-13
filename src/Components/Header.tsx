@@ -54,17 +54,17 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
           </div>
         </Link>
         <ul className={styles.headerUl}>
-          <Link to='/nutrients'><li>영양소</li></Link>
-          <Link to='/FreeTalking'><li className={styles.mypageLi}>요리공유방</li></Link>
+          <Link to='/nutrients'><li className={styles.headerLi}><button className="btn btn-sm">영양소</button></li></Link>
+          <Link to='/FreeTalking'><li className={styles.headerLi}><button className="btn btn-sm">요리공유방</button></li></Link>
         </ul>
       </div>
       <div>
         <ul className={styles.mypageUl}>
           {
             isLoggedIn ? (
-              <Link to='/mypage'><li className={styles.mypageLi}>{displayName} 님</li></Link>
+              <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">{displayName} 님</button></li></Link>
             ) : (
-              <Link to='/login'><li className={styles.mypageLi}>로그인</li></Link>
+              <Link to='/login'><li className={styles.headerLi}><button className="btn btn-sm">로그인</button></li></Link>
             )
           }
         </ul>

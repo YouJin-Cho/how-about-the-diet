@@ -4,6 +4,10 @@
   --mainColor: #bcffe1;
 }
 
+body {
+  font-family: 'Sunflower', cursive;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,4 +24,8 @@ ul {
 
 img {
   margin: 0;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

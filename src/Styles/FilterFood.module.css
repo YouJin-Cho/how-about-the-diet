@@ -15,11 +15,17 @@
   margin-left: 10px;
   margin-right: 10px;
 
-  border: 1px solid #C4C4C4;
+  border: 1px solid #01c466;
   border-radius: 10px;
   padding: 12px 13px;
   line-height: 16px;
   appearance: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.dropDownContainer > select:hover {
+  transform: scale(1.05);
+  border: 2px solid #01c466;
 }
 
 .foodListUl {
@@ -35,14 +41,23 @@
   width: 250px;
   height: 250px;
   border: none;
+  transition: transform 0.3s ease-in-out;
 }
+
+.foodListLi:hover {
+  transform: scale(1.05);
+}
+
+.foodListLi:hover > section {
+  background: #02a154;
+}
+
 
 .imgSection {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 220px;
-  border-bottom: 1px solid;
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
 }
@@ -62,7 +77,7 @@
   padding: 5px 0px;
   font-weight: bold;
   color: #ffffff;
-  background: #00a554;
+  background: #01c466;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
 }
@@ -83,15 +98,17 @@
 }
 
 .pagination > ul > li > button {
-  width: 30px;
-  height: 30px;
   border: none;
   border-radius: 10px;
   color: #ffffff;
-  background-color: #00a554;
+  background-color: #01c466;
+}
+
+.pagination > ul > li > button:hover {
+  background-color: #027a40;
 }
 
 .pagination > ul > li > button:disabled {
-  background: #C4C4C4;
+  background: #019e52;
+  color: #ffffff;
 }
-

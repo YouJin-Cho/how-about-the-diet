@@ -27,22 +27,25 @@ const FreeTalking = ({ userObj }:userObjProps) => {
   const onSubmit = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     let photoUrl = ''
-
+  
     if(photo !== '') {
-      const phothoRef = storageService.ref().child(`${userObj?.uid}/${uuidv4()}`) // npm install uuid 
-      const response = await phothoRef.putString(photo, 'data_url')
+      const photoRef = storageService.ref().child(`${userObj?.uid}/${uuidv4()}`)
+      const response = await photoRef.putString(photo, 'data_url')
       photoUrl = await response.ref.getDownloadURL()
     }
+  
     const newTalk = {
       text: talk, 
       createdAt: Date.now(),
       creatorId: userObj?.uid,
       photoUrl
     }
+  
     await dbService.collection('fTalks').add(newTalk)
     setTalk('')
     setPhoto('')
   }
+  
 
   // input value 변경
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,13 +77,13 @@ const FreeTalking = ({ userObj }:userObjProps) => {
     const fileInput = document.querySelector('input[type=file]') as HTMLInputElement
     if (fileInput) {
       fileInput.value = ''
-    }
+    } 
   }
 
   return (
     <div className={styles.talkContainer}>
       <div className={styles.talkingContainer}>
-        <h3>자유롭게 Talk!</h3>
+        <h3>오늘 먹은 음식을 공유하세요! 💁‍♀️</h3>
           <div className={styles.talkBox}>
             <div>
               {
@@ -101,7 +104,7 @@ const FreeTalking = ({ userObj }:userObjProps) => {
           <form className={styles.photoForm} onSubmit={onSubmit}>
             <div className={styles.photoTalk}>
               <input className={styles.file} type='file' accept='image/*' onChange={fileChange}/>
-              <input className={styles.text} type='text' value={talk} onChange={onChange} placeholder='제발!!' maxLength={120} />
+              <input className={styles.text} type='text' value={talk} onChange={onChange} placeholder='오늘은 연어를 먹었어요 🥹' maxLength={120} required/>
               <input className={styles.submit} type='submit' value='전송' />
             </div>
             {photo && 

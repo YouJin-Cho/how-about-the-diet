@@ -9,6 +9,34 @@
   height: 1000px;
 }
 
+.myPageContainer > button {
+  width: 200px;
+  height: 70px;
+  border: 2px solid #01c466;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.myPageContainer > button:hover {
+  border: 2px solid #01c466;
+  background: #01c466;
+  color: #ffffff;
+}
+
+.myPageContainer > .logOutBtn > button {
+  width: 100px;
+  height: 50px;
+  background: #01c466;
+  color: #ffffff;
+}
+
+.myPageContainer > .logOutBtn > button:hover {
+  width: 100px;
+  height: 50px;
+  background: #00a554;
+  color: #ffffff;
+}
+
 .logOutBtn {
   width: 100%;
   display: flex;
@@ -25,32 +53,27 @@
 
 .likeContainer {
   width: 1000px;
-  min-height: 700px;
+  min-height: 500px;
   max-height: 1000px;
   padding: 10px;
-  border: 1px solid black;
+  border: 2px solid #01c466;
+  border-radius: 16px;
   margin-top: 30px;
 }
 
 .likeBox {
   position: relative;
-}
-
-.allDelete {
+  height: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  padding: 5px;
-  border-radius: 50%;
-  color: #ffffff;
-  background: #00a554;
 }
 
-.allDeleteHeart {
-  width: 25px;
-  height: 25px;
+.likeBox > p {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 .likeUl {
@@ -61,6 +84,7 @@
   row-gap: 40px;
   list-style: none;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .likeUl > li {
@@ -69,13 +93,34 @@
   position: relative;
   width: 300px;
   height: 300px;
+  border: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.likeUl > li:hover {
+  transform: scale(1.05);
+}
+
+.likeUl > li:hover > p {
+  background: #02a154;
+}
+
+.likeUl > li > img {
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
 }
 
 .likeUl > li > p {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 30px;
   padding: 10px;
+  color: #ffffff;
+  font-weight: bold;
+  background: #01c466;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .likeUl > li > img {

@@ -17,7 +17,7 @@
 .searchUl {
   position: absolute;
   width: 500px;
-  max-height: 200px;
+  max-height: 250px;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -25,26 +25,33 @@
   overflow-y: auto;
   top: 100%;
   margin-top: 10px;
+  border: 2px solid #01c466;
   border-radius: 16px;
-  color: #ffffff;
-  background:#dfdede;
+  background: #ffffff;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1);
+  overflow-y: auto;
 }
 
 .searchUl > li {
-  padding: 10px 5px;
-  border-bottom: 1px dotted #ffffff;
+  padding: 15px 30px;
+  transition: transform 0.2s ease-in-out;
 }
 
 .searchUl > li:last-child {
   border: none;
 }
 
+.searchUl > li:hover {
+  transform: scale(1.03);
+  color: #ffffff;
+  background: #01c466;
+}
+
 .searchFood > input {
   width: 500px;
   height: 60px;
   padding: 5px 10px;
-  border: 2px solid #00a554;
+  border: 2px solid #01c466;
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
   border-right: none;
@@ -52,15 +59,23 @@
 
 .searchFood > button {
   width: 80px;
-  border: 2px solid #00a554;
+  height: 60px;
+  border: 2px solid #01c466;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   border-left: none;
   font-size: 15px;
   font-weight: bold;
   color: #ffffff;
-  background: #00a554;
+  background: #01c466;
   cursor: pointer;
+}
+
+.searchFood > button:hover {
+  border: 2px solid #027a40;
+  background: #027a40;
 }
 
 .category > ul {

@@ -62,8 +62,8 @@ const Talking = (props:TalkingProps) => {
               {
                 props.isOwner && (
                   <div className={styles.btnContainer}>
-                    <button className={styles.deleteBtn} onClick={deleteClick}><FaTrashAlt /></button>
-                    <button className={styles.updateBtn} onClick={editiongClick}><BsFillPencilFill /></button>
+                    <button onClick={deleteClick}><FaTrashAlt /></button>
+                    <button onClick={editiongClick}><BsFillPencilFill /></button>
                   </div>
                 )
               }

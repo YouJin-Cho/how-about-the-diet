@@ -1,15 +1,8 @@
 import styels from '../Styles/Nutrients.module.css'
 import nutrientData from '../../public/nutrient.json'
-import { useState } from 'react'
 import NutrientItems from './NutrientItems'
 
 const Nutrients = () => {
-
-  const [selectedNutrient, setSelectedNutrient] = useState<number>()
-  
-  const handleNutrientClick = (id: number) => {
-    setSelectedNutrient(id)
-  }
 
   return (
     <div className={styels.nutrientsContainer}>
@@ -17,7 +10,7 @@ const Nutrients = () => {
       <div className={styels.imgContainer}>
         {
           nutrientData.map((nutrient) => (
-            <NutrientItems key={nutrient.id} nutrient={nutrient} onClick={handleNutrientClick} />
+            <NutrientItems key={nutrient.id} nutrient={nutrient} />
           ))
         }
       </div>

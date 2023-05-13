@@ -69,7 +69,7 @@ const Auth = () => {
 
   return (
     <>
-    <button onClick={toggleAccount}>{newAccount ? '계정이 있다면? Click후, 로그인' : '계정이 없다면? Click후, 회원가입'}</button>
+    <button className="btn btn-xs" onClick={toggleAccount}>{newAccount ? '계정이 있다면? Click후, 로그인' : '계정이 없다면? Click후, 회원가입'}</button>
     <div>
       <form className={styles.idPassword} onSubmit={onSubmit}>
       {newAccount && (

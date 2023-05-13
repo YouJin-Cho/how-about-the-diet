@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from '../Styles/MyPage.module.css'
 import { authService, dbService } from '../firebase'
 import { useEffect, useState } from 'react'
@@ -57,18 +57,21 @@ const MyPage = ({ userObj }: userObjProps) => {
   return (
     <div className={styles.myPageContainer}>
       <div className={styles.logOutBtn}>
-        <button onClick={onLogOutClick}>로그아웃</button>
+        <button className="btn btn-accent" onClick={onLogOutClick}>로그아웃</button>
       </div>
-      <h3>{userObj?.displayName}의 찜리스트</h3>
+      {
+        likeFoods.length === 0 ? (
+          <button className="btn btn-accent"><Link to='/'>👈🏻 음식 담으러 GO</Link></button>
+        ) : (
+          <button className="btn btn-accent" onClick={deleteAllClick}>🍎 음식 전체삭제 🥦</button>
+        )
+      }
       <div className={styles.likeContainer}>
         <div className={styles.likeBox}>
           {likeFoods.length === 0 ? (
-            <p>찜한 음식이 없습니다.</p>
+            <p>찜한 음식이 없습니다. <br/>원하는 음식을 담아보세요 💁‍♀️</p>
           ) : (
             <>
-              <div className={styles.allDelete}>
-                <AiFillHeart className={styles.allDeleteHeart} onClick={deleteAllClick}>전체삭제</AiFillHeart>
-              </div>
               <ul className={styles.likeUl}>
                 {likeFoods.map((food) => (
                   <li key={food.id}>

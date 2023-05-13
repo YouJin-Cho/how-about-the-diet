@@ -67,6 +67,8 @@ export interface NutrientItemsProps {
     id: number
     title: string
     image: string
+    char: string
+    caution: string
+    food: string
   }
-  onClick: (id: number) => void
 }

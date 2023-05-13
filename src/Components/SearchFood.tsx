@@ -36,6 +36,10 @@ const SearchFood = () => {
 
   // 검색 
   const handleSearchClick = () => {
+    if(!searchTerm) {
+      alert('검색할 음식을 작성해주세요 ☺️')
+      return
+    }
     navigate(`/search/${searchTerm}`);
     setSearchTerm('')
   }
@@ -55,7 +59,7 @@ const SearchFood = () => {
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
       ></input>
-      <button onClick={handleSearchClick}>검색하기</button>
+      <button className="btn btn-lg" onClick={handleSearchClick}>검색</button>
       {
         searchTerm !== "" && foodTitles.length > 0 && (
           <ul className={styles.searchUl}>
