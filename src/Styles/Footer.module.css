@@ -4,9 +4,9 @@
   align-items: center;
   min-width: 1280px;
   height: 230px;
-  padding: 0px 100px;
+  padding: 0px 100px 0px 120px;
   margin-top: 100px;
-  background: #00a554;
+  background: #01c466;
   position: relative;
   bottom: 0;
 }
@@ -25,11 +25,17 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
+}
+
+.addContainer > div > p {
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
 }
 
 .footerCarousel {
-  width: 90%;
+  width: 95%;
 }
 
 .addDescription {
@@ -42,4 +48,68 @@
 
 .footerImg {
   border-radius: 16px;
+}
+
+.logoBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 200px;
+}
+
+.logoContainer > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffff;
+  background: #01c466;
+  border: 2px solid #ffffff;
+  border-radius: 16px;
+}
+
+.logoBox > div > p {
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+}
+
+.logoBox > div > p:last-child {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.sns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+}
+
+.sns > div > p {
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding: 5px 15px;
+  border: 2px solid #ffffff;
+  border-radius: 16px;
+}
+
+.snsBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  color: #ffffff;
+  margin: 0px 10px;
 }

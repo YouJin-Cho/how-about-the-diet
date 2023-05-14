@@ -54,6 +54,10 @@ const MyPage = ({ userObj }: userObjProps) => {
     }
   }
 
+  const likeFoodClick = (id: number) => {
+    navigate(`/detail/${id}`)
+  }
+
   return (
     <div className={styles.myPageContainer}>
       <div className={styles.logOutBtn}>
@@ -74,7 +78,7 @@ const MyPage = ({ userObj }: userObjProps) => {
             <>
               <ul className={styles.likeUl}>
                 {likeFoods.map((food) => (
-                  <li key={food.id}>
+                  <li key={food.id} onClick={()=>likeFoodClick(Number(food.id))}>
                     <img src={food.image} width='50px' height='50px'/>
                     <p>{food.title}</p>
                     <AiFillHeart className={styles.likeIcon} onClick={()=>deleteClick(food.id)} />

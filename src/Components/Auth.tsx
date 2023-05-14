@@ -69,7 +69,7 @@ const Auth = () => {
 
   return (
     <>
-    <button className="btn btn-xs" onClick={toggleAccount}>{newAccount ? '계정이 있다면? Click후, 로그인' : '계정이 없다면? Click후, 회원가입'}</button>
+    <button className="btn btn-xs" onClick={toggleAccount}>{newAccount ? '💁‍♀️ 식단어때에 로그인 해주세요!' : '💁‍♀️ 식단어때가 처음이신가요?'}</button>
     <div>
       <form className={styles.idPassword} onSubmit={onSubmit}>
       {newAccount && (
@@ -89,7 +89,11 @@ const Auth = () => {
         <input type='submit' value={newAccount ? '회원가입' : '로그인'} />
       </form>
     </div>
-    <SocialLogin />
+    {
+      !newAccount && (
+        <SocialLogin />
+      )
+    }
     </>
   )
 }

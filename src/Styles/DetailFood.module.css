@@ -1,22 +1,30 @@
 .searchContainer {
   padding: 0px 100px;
   min-width: 1280px;
-  height: 850px;
+  min-height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 .foodTitle {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   padding: 10px 7px;
   margin-bottom: 30px;
   font-weight: bold;
-  border: 1px solid #00a554;
+  border: 1px solid #01c466;
   color: #ffffff;
-  background: #00a554;
+  background: #01c466;
+  
+  position: absolute;
+  bottom: 90%;
+  left: 0%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .foodDesc {
@@ -24,11 +32,15 @@
   margin-bottom: 30px;
   max-width: 1200px;
   max-height: 600px;
+  position: relative;
 }
 
 .foodDesc > div > img {
   width: 300px;
   height: 300px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .foodImgDesc {
@@ -41,13 +53,22 @@
 
 .foodImgDesc > div > hr {
   width: 260px;
-  border: 1px solid #00a554;
+  border: 1px solid #01c466;
 }
 
 .foodImgDesc > p {
-  min-height: 20px;
+  min-height: 10px;
   max-width: 740px;
   min-width: 740px;
+  line-height: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #01c466;
+}
+
+.foodImgDesc > span {
+  display: block;
+  line-height: 3  0px;
 }
 
 .foodImgDesc > span:nth-child(1) {
@@ -60,9 +81,10 @@
 .cookingDesc {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 1080px;
-  height: 500px;
-  border: 2px solid #00a554;
+  min-height: 200px;
+  border: 2px solid #01c466;
   border-radius: 16px;
 }
 
@@ -74,21 +96,18 @@
   margin-bottom: 30px;
   text-align: center;
   font-weight: bold;
-  border: 1px solid #00a554;
+  border: 1px solid #01c466;
   border-radius: 16px;
   color: #ffffff;
-  background: #00a554;
+  background: #01c466;
 }
 
 .cookingDesc > span {
   width: 1020px;
   margin-left: 30px;
-}
-
-.cookingFirstDesc {
-  height: 30px;
+  line-height: 30px;
 }
 
 .cookingDesc > span:last-child {
-  height: 230px;
+  margin-bottom: 30px;
 }
