@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
 import styles from '../Styles/Header.module.css'
-import { GiHealthNormal } from 'react-icons/gi'
 import { useEffect, useState } from 'react'
 import cx from 'clsx'
 import { authService } from '../firebase'
@@ -36,12 +35,11 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
   }, [])
 
   // 닉네임
-
   useEffect(() => {
-    const unsubscribe = authService.onAuthStateChanged((user) => {
+    const nameOn = authService.onAuthStateChanged((user) => {
       setDisplayName(user?.displayName)
     })
-    return unsubscribe
+    return nameOn
   }, [])
 
   return (
@@ -49,20 +47,19 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
       <div className={styles.mainLogo}>
         <Link to='/'>
           <div className={styles.logoContainer}>
-            <h2>식단어때</h2>
-            <GiHealthNormal />
+            <img src='../../public/logo/logo.png' width='100px' height='40px' />
           </div>
         </Link>
         <ul className={styles.headerUl}>
           <Link to='/nutrients'><li className={styles.headerLi}><button className="btn btn-sm">영양소</button></li></Link>
-          <Link to='/FreeTalking'><li className={styles.headerLi}><button className="btn btn-sm">요리공유방</button></li></Link>
+          <Link to='/FreeTalking'><li className={styles.headerLi}><button className="btn btn-sm">식단공유방</button></li></Link>
         </ul>
       </div>
       <div>
         <ul className={styles.mypageUl}>
           {
             isLoggedIn ? (
-              <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">{displayName} 님</button></li></Link>
+              <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">{displayName}님 :&#41;</button></li></Link>
             ) : (
               <Link to='/login'><li className={styles.headerLi}><button className="btn btn-sm">로그인</button></li></Link>
             )

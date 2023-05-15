@@ -12,7 +12,7 @@ const SocialLogin = () => {
     let provider = new firebaseInstance.auth.GoogleAuthProvider()
     await authService.signInWithPopup(provider)
     navigate('/')
-    alert('식단어때에 로그인 되셨습니다 :)')
+    alert('식단어때에 로그인 되셨습니다 ☺️')
   }
 
   return (

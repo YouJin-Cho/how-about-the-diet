@@ -46,7 +46,7 @@ const MyPage = ({ userObj }: userObjProps) => {
   };
 
   const deleteAllClick = async () => {
-    const deleteOk = confirm("음식을 전부 삭제하시겠습니까? 🥹")
+    const deleteOk = confirm("음식을 전부 삭제하시겠습니까?")
     if(deleteOk) {
       const foodsRef = dbService.collection(`likes/${userObj?.uid}/foods`)
       const deleteSnap = await foodsRef.get()

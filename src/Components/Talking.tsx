@@ -10,7 +10,7 @@ const Talking = (props:TalkingProps) => {
   const [editing, setEditing] = useState(false)
   const [newTalk, setNewTalk] = useState(props.text)
 
-  // talk 삭제
+  // talk 삭제s
   const deleteClick = async() => {
     const deleteOk = confirm('정말로 삭제하시겠습니까?')
     console.log(deleteOk)
@@ -54,7 +54,7 @@ const Talking = (props:TalkingProps) => {
               </form> 
             </>
           ) : (
-            <>  
+            <> 
               <p>{props.text}</p>
               {
                 props.photoUpdate && <img className={styles.photoEditing} src={props.photoUpdate} />

@@ -61,9 +61,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
   margin-bottom: 10px;
   font-weight: bold;
+  padding: 2px 10px;
   font-size: 20px;
   color: #ffffff;
   background: #01c466;
@@ -118,4 +118,8 @@
   width: 13px;
   height: 13px;
   transform: translateY(-1px);
+}
+
+.logoImg {
+  margin-bottom: 10px;
 }

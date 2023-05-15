@@ -83,7 +83,7 @@ const FreeTalking = ({ userObj }:userObjProps) => {
   return (
     <div className={styles.talkContainer}>
       <div className={styles.talkingContainer}>
-        <h3>오늘 먹은 음식을 공유하세요! 💁‍♀️</h3>
+        <h3>함께 식단을 공유하세요! 💁‍♀️</h3>
           <div className={styles.talkBox}>
             <div>
               {
@@ -96,7 +96,9 @@ const FreeTalking = ({ userObj }:userObjProps) => {
                     id={item.id}
                     photoUpdate={item.photoUrl}
                     userObj={userObj}
-                    isOwner={item.creatorId === userObj?.uid}/>
+                    isOwner={item.creatorId === userObj?.uid}
+                    currentUser={item.creatorId}
+                    />
                 ))
               }
             </div>

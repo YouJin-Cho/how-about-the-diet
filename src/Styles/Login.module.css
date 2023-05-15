@@ -4,7 +4,8 @@
   justify-content: center;
   align-items: center;
   min-width: 1280px;
-  height: 700px;
+  min-height: 600px;
+  margin-top: 130px;
 }
 
 .loginBox {
@@ -103,8 +104,21 @@
 .googleLogin {
   font-size: 35px;
   padding: 5px;
-  border: 1px solid #00a554;
   border-radius: 6px;
-  background: #00a554;
+  background: #01ba60;
   margin-right: 15px;
+  transition: background 0.2s ease-in-out;
+}
+
+.googleLogin:hover {
+  background: #027a40;
+}
+
+.submitBtn {
+  background: #00a554;
+  transition: background 0.2s ease-in-out;
+}
+
+.submitBtn:hover {
+  background: #027a40;
 }

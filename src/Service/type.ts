@@ -38,6 +38,7 @@ export interface TalkingProps {
   text: string;
   isOwner: boolean;
   photoUpdate: string;
+  currentUser: string;
 }
 
 export interface userObjProps {

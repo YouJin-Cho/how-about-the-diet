@@ -8,12 +8,13 @@ import SocialLogin from './SocialLogin'
 const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  // const [confirmPassword, setConfirmPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [newAccount, setNewAccount] = useState(true)
 
   const navigate = useNavigate()
 
-  // email & password 작성
+  // input - value
   const onChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { name, value },
@@ -24,12 +25,13 @@ const Auth = () => {
       setEmail(value)
     } else if (name === 'password') {
       setPassword(value)
-    }
+    } 
   }
 
   // email & password 전송
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     try {
       let data
       if (newAccount) {
@@ -75,7 +77,7 @@ const Auth = () => {
       {newAccount && (
         <div>
           <span>닉네임</span>
-          <input type='text' name='displayName' value={displayName} onChange={onChanged} placeholder='name' required/>
+          <input type='text' name='displayName' value={displayName} onChange={onChanged} placeholder='Name' required/>
         </div>
       )}
         <div>
@@ -86,7 +88,7 @@ const Auth = () => {
           <span>비밀번호</span>
           <input type='password' name='password' value={password} onChange={onChanged} placeholder='Password' required/>
         </div>
-        <input type='submit' value={newAccount ? '회원가입' : '로그인'} />
+        <input className={styles.submitBtn} type='submit' value={newAccount ? '회원가입' : '로그인'} />
       </form>
     </div>
     {
