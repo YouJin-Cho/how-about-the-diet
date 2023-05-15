@@ -13,7 +13,7 @@ const Footer = () => {
       <div className={styles.mainFooterContainer}>  
         <div className={styles.logoBox}>
           <div className={styles.logoContainer}>
-            <button className="btn btn-accent"><Link to='/'>식단어때<GiHealthNormal /></Link></button>
+            <button className="btn btn-accent"><Link to='/'>식단어때<GiHealthNormal className={styles.giHeal}/></Link></button>
           </div>
           <div>
             <p>COMPANY NAME: 식단어때</p>

@@ -9,8 +9,12 @@ const MyPage = ({ userObj }: userObjProps) => {
   const navigate = useNavigate()
 
   const onLogOutClick = () => {
-    authService.signOut()
-    navigate('/login')
+    const logOut =  confirm('로그아웃 하시겠습니까? 🫠') 
+    if (logOut) {
+      authService.signOut()
+      navigate('/login')
+    } else {
+    }
   }
 
   const [likeFoods, setLikeFoods] = useState<LikeFoods[]>([]);
@@ -33,7 +37,7 @@ const MyPage = ({ userObj }: userObjProps) => {
   }, [])
 
   const deleteClick = async (foodId: string) => {
-    const deleteOk = confirm("찜리스트에서 삭제하시겠습니까?");
+    const deleteOk = confirm("찜리스트에서 삭제하시겠습니까? 🥹");
     if (deleteOk) {
       await dbService.doc(`likes/${userObj?.uid}/foods/${foodId}`).delete();
       setLikeFoods((prev) => prev.filter((food) => food.id !== foodId));
@@ -42,7 +46,7 @@ const MyPage = ({ userObj }: userObjProps) => {
   };
 
   const deleteAllClick = async () => {
-    const deleteOk = confirm("음식을 전부 삭제하시겠습니까?")
+    const deleteOk = confirm("음식을 전부 삭제하시겠습니까? 🥹")
     if(deleteOk) {
       const foodsRef = dbService.collection(`likes/${userObj?.uid}/foods`)
       const deleteSnap = await foodsRef.get()
@@ -78,8 +82,8 @@ const MyPage = ({ userObj }: userObjProps) => {
             <>
               <ul className={styles.likeUl}>
                 {likeFoods.map((food) => (
-                  <li key={food.id} onClick={()=>likeFoodClick(Number(food.id))}>
-                    <img src={food.image} width='50px' height='50px'/>
+                  <li key={food.id}>
+                    <img src={food.image} width='50px' height='50px' onClick={()=>likeFoodClick(Number(food.id))}/>
                     <p>{food.title}</p>
                     <AiFillHeart className={styles.likeIcon} onClick={()=>deleteClick(food.id)} />
                   </li>

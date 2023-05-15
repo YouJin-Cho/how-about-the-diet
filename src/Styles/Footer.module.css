@@ -108,8 +108,14 @@
 
 .logo {
   display: flex;
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   color: #ffffff;
   margin: 0px 10px;
+}
+
+.giHeal {
+  width: 13px;
+  height: 13px;
+  transform: translateY(-1px);
 }

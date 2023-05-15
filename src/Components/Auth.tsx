@@ -39,11 +39,11 @@ const Auth = () => {
         })
         authService.signOut()
         navigate('/login')
-        alert('식단어때에 회원가입 되셨습니다. 로그인 해주세요 :)')
+        alert('식단어때에 회원가입 되셨습니다. 로그인 해주세요 ☺️')
         return
       } else {
         data = await authService.signInWithEmailAndPassword(email, password)
-        alert('식단어때에 로그인 되었습니다.')
+        alert('식단어때에 로그인 되었습니다 ☺️')
         setNewAccount(false)
         navigate('/')
       }

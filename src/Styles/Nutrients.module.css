@@ -1,12 +1,10 @@
 
 .nutrientsContainer {
-  padding: 0px 100px;
   min-width: 1280px;
   height: 900px;
   margin-top: 170px;
   display: flex;
   flex-direction: column;
-
 }
 
 .nutrientsContainer > h3 {
@@ -23,10 +21,12 @@
 
 .imgContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 400px);
   grid-template-rows: repeat(2, 1fr);
-  column-gap: 20px;
-  row-gap: 40px;
+  justify-content: center;
+  align-items: center;
+  row-gap: 70px;
+  margin-left: 45px;
 }
 
 .Hover {

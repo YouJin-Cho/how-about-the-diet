@@ -123,18 +123,26 @@ const FilterFood = () => {
         </select>
       </div>
       {/* 페이지네이션 */}
-      <ul className={styles.foodListUl}>
-        {currentItems.map((food) => (
-          <li className={styles.foodListLi} key={food.id} onClick={() => handleFoodClick(food.id)}>
-            <section className={styles.imgSection}> 
-              <img src={food.image} />
-            </section>
-            <section className={styles.descSection}>
-              <p>{food.title}</p>
-            </section>
-          </li>
-        ))}
-      </ul>
+      {
+        currentItems.length === 0 ? (
+          <section className={styles.noFood}>
+            <p>해당 음식이 없습니다 😂</p>
+          </section>
+        ) : (
+          <ul className={styles.foodListUl}>
+            {currentItems.map((food) => (
+              <li className={styles.foodListLi} key={food.id} onClick={() => handleFoodClick(food.id)}>
+                <section className={styles.imgSection}> 
+                  <img src={food.image} />
+                </section>
+                <section className={styles.descSection}>
+                  <p>{food.title}</p>
+                </section>
+              </li>
+            ))}
+          </ul>
+        )
+      }
       <div className={styles.pagination}>
         {totalPages > 1 && (
           <ul>
