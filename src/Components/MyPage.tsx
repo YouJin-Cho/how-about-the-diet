@@ -6,8 +6,11 @@ import { LikeFoods, userObjProps} from '../Service/type'
 import { AiFillHeart } from 'react-icons/ai'
 
 const MyPage = ({ userObj }: userObjProps) => {
+
+  const [likeFoods, setLikeFoods] = useState<LikeFoods[]>([]);
   const navigate = useNavigate()
 
+  // 로그아웃
   const onLogOutClick = () => {
     const logOut =  confirm('로그아웃 하시겠습니까? 🫠') 
     if (logOut) {
@@ -16,11 +19,10 @@ const MyPage = ({ userObj }: userObjProps) => {
     }
   }
 
-  const [likeFoods, setLikeFoods] = useState<LikeFoods[]>([]);
-
+  // 찜한 음식 가져오기
   const fetchData = async() => {
     if(userObj) {
-      const snapcatch = await dbService // dbLikes?
+      const snapcatch = await dbService 
       .collection(`likes/${userObj.uid}/foods`)
       .get()
       const likeFoodsArray = snapcatch.docs.map((doc) => ({
@@ -35,6 +37,7 @@ const MyPage = ({ userObj }: userObjProps) => {
     fetchData()
   }, [])
 
+  // 찜한 음식 삭제
   const deleteClick = async (foodId: string) => {
     const deleteOk = confirm("찜리스트에서 삭제하시겠습니까? 🥹");
     if (deleteOk) {
@@ -44,9 +47,10 @@ const MyPage = ({ userObj }: userObjProps) => {
     }
   };
 
+  // 찜한 음식 전체 삭제
   const deleteAllClick = async () => {
-    const deleteOk = confirm("음식을 전부 삭제하시겠습니까?")
-    if(deleteOk) {
+    const deleteAllOk = confirm("음식을 전부 삭제하시겠습니까? 🫠")
+    if(deleteAllOk) {
       const foodsRef = dbService.collection(`likes/${userObj?.uid}/foods`)
       const deleteSnap = await foodsRef.get()
       deleteSnap.forEach((doc) => {
@@ -57,6 +61,7 @@ const MyPage = ({ userObj }: userObjProps) => {
     }
   }
 
+  // 음식 상세페이지 이동
   const likeFoodClick = (id: number) => {
     navigate(`/detail/${id}`)
   }
@@ -68,9 +73,11 @@ const MyPage = ({ userObj }: userObjProps) => {
       </div>
       {
         likeFoods.length === 0 ? (
-          <button className="btn btn-accent"><Link to='/'>👈🏻 음식 담으러 GO</Link></button>
+          <>
+            <button className="btn btn-accent"><Link to='/'>{userObj?.displayName}<span style={{ fontSize: '15px' }}>님 <br />음식을 담아주세요 🥹</span></Link></button>
+          </>
         ) : (
-          <button className="btn btn-accent" onClick={deleteAllClick}>🍎 음식 전체삭제 🥦</button>
+          <button className="btn btn-accent" onClick={deleteAllClick}>🍎 음식 전체 삭제 🥦</button>
         )
       }
       <div className={styles.likeContainer}>

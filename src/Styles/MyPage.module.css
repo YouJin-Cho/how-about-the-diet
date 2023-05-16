@@ -14,7 +14,8 @@
   height: 70px;
   border: 2px solid #01c466;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
+  position: relative;
 }
 
 .myPageContainer > button:hover {

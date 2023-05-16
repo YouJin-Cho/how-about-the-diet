@@ -43,10 +43,9 @@ const FreeTalking = ({ userObj }:userObjProps) => {
   
     await dbService.collection('fTalks').add(newTalk)
     setTalk('')
-    setPhoto('')
+    clearPhotoClick()
   }
   
-
   // input value 변경
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -55,7 +54,7 @@ const FreeTalking = ({ userObj }:userObjProps) => {
     setTalk(value)
   }
 
-  // 사진 업로드
+  // 사진 가져오기
   const fileChange = (e: ChangeEvent<HTMLInputElement & { files: FileList }>) => {
     const {
       target: { files }

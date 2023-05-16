@@ -5,6 +5,7 @@ import { BsInstagram } from 'react-icons/bs'
 import { AiFillFacebook } from 'react-icons/ai'
 
 const FooterInfo = () => {
+  
   return (
     <>
       <div className={styles.logoBox}>

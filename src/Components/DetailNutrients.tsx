@@ -6,10 +6,10 @@ const DetailNutrients = () => {
 
   const { id } = useParams<{ id: string }>()
   const foodId = parseInt(id || '0', 10)
-  const nutrient = nutrientData.find((nutrient) => nutrient.id === foodId);
+  const nutrient = nutrientData.find((nutrient) => nutrient.id === foodId)
 
   if (!nutrient) {
-    return <div>해당 영양소를 찾을 수 없습니다.</div>;
+    return <div>해당 영양소를 찾을 수 없습니다.</div>
   }
   
   return (

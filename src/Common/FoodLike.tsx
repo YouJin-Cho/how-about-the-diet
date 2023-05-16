@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { userObjProps } from "../Service/type";
-import { dbService } from "../firebase";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { userObjProps } from "../Service/type"
+import { dbService } from "../firebase"
+import { useNavigate, useParams } from "react-router-dom"
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
-import { LikeFoods } from "../Service/type";
+import { LikeFoods } from "../Service/type"
 import styles from '../Styles/FoodLike.module.css'
 import foodData from '../../public/food.json'
 
 const FoodLike = ({ userObj }:userObjProps) => {
 
-  // DetailFood, FoodLike
   const { id } = useParams<{ id: string }>()
   const foodId = parseInt(id || '0', 10)
-  const food = foodData.find((food) => food.id === foodId);
+  const food = foodData.find((food) => food.id === foodId)
+  
   const dbLikes = dbService.collection('likes')
   const navigate = useNavigate()
 
@@ -33,6 +33,7 @@ const FoodLike = ({ userObj }:userObjProps) => {
 
   const foodLikeClick = () => {
     if (!userObj) return
+
     const likeRef = dbLikes.doc(userObj.uid).collection('foods').doc(`${foodId}`)
     if (like) {
       const deleteOk = confirm("해당 음식을 찜리스트에서 삭제하시겠습니까?")
@@ -50,6 +51,7 @@ const FoodLike = ({ userObj }:userObjProps) => {
           like: true,
         });
         setLike(true)
+        
         const goMyPage = confirm("마이페이지에서 상품을 확인하시겠습니까?")
         if (goMyPage) {
           navigate('/mypage')

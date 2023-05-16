@@ -9,7 +9,7 @@ const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
-  const [newAccount, setNewAccount] = useState(true)
+  const [newAccount, setNewAccount] = useState(true) // 화면 초기화 시, 회원가입 창 
 
   const navigate = useNavigate()
 
@@ -38,9 +38,8 @@ const Auth = () => {
         await data.user?.updateProfile({
           displayName: displayName
         })
-        authService.signOut()
-        navigate('/login')
-        alert('식단어때에 회원가입 되셨습니다. 로그인 해주세요 ☺️')
+        alert(`${displayName}님, 환영합니다 ☺️ 로그인 되었습니다.`)
+        navigate('/')
         return
       } else {
         data = await authService.signInWithEmailAndPassword(email, password)
@@ -70,31 +69,31 @@ const Auth = () => {
 
   return (
     <>
-    <button className="btn btn-xs" onClick={toggleAccount}>{newAccount ? '💁‍♀️ 식단어때에 로그인 해주세요!' : '💁‍♀️ 식단어때가 처음이신가요?'}</button>
-    <div>
-      <form className={styles.idPassword} onSubmit={onSubmit}>
-      {newAccount && (
-        <div>
-          <span>닉네임</span>
-          <input type='text' name='displayName' value={displayName} onChange={onChanged} placeholder='Name' required/>
-        </div>
-      )}
-        <div>
-          <span>이메일</span>
-          <input type='email' name='email' value={email} onChange={onChanged} placeholder='Email' required/>
-        </div>
-        <div>
-          <span>비밀번호</span>
-          <input type='password' name='password' value={password} onChange={onChanged} placeholder='Password' required/>
-        </div>
-        <input className={styles.submitBtn} type='submit' value={newAccount ? '회원가입' : '로그인'} />
-      </form>
-    </div>
-    {
-      !newAccount && (
-        <SocialLogin />
-      )
-    }
+      <button className="btn btn-xs" onClick={toggleAccount}>{newAccount ? '💁‍♀️ 식단어때에 로그인 해주세요!' : '💁‍♀️ 식단어때가 처음이신가요?'}</button>
+      <div>
+        <form className={styles.idPassword} onSubmit={onSubmit}>
+          {newAccount && (
+            <div>
+              <span>닉네임</span>
+              <input type='text' name='displayName' value={displayName} onChange={onChanged} placeholder='Name' required/>
+            </div>
+          )}
+          <div>
+            <span>이메일</span>
+            <input type='email' name='email' value={email} onChange={onChanged} placeholder='Email' required/>
+          </div>
+          <div>
+            <span>비밀번호</span>
+            <input type='password' name='password' value={password} onChange={onChanged} placeholder='Password' required/>
+          </div>
+          <input className={styles.submitBtn} type='submit' value={newAccount ? '회원가입' : '로그인'} />
+        </form>
+      </div>
+      {
+        !newAccount && (
+          <SocialLogin />
+        )
+      }
     </>
   )
 }

@@ -10,7 +10,7 @@ const Talking = (props:TalkingProps) => {
   const [editing, setEditing] = useState(false)
   const [newTalk, setNewTalk] = useState(props.text)
 
-  // talk 삭제s
+  // talk 삭제
   const deleteClick = async() => {
     const deleteOk = confirm('정말로 삭제하시겠습니까?')
     console.log(deleteOk)

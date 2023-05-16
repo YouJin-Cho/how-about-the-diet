@@ -5,22 +5,22 @@ import cx from 'clsx'
 import { authService } from '../firebase'
 import { HeaderProps } from '../Service/type'
 
-// 헤더 항상 상위에 고정
+
+// 페이지 이동 시, 화면 상위 고정
 export const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 const Header = ({ isLoggedIn }: HeaderProps) => {
 
   const [displayName, setDisplayName] = useState(authService.currentUser?.displayName)
-
-  // 헤더 고정
   const [isSticky, setIsSticky] = useState(false)
 
+  // 헤더 고정
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
@@ -59,7 +59,7 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
         <ul className={styles.mypageUl}>
           {
             isLoggedIn ? (
-              <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">{displayName}님 :&#41;</button></li></Link>
+              <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">찜리스트</button></li></Link>
             ) : (
               <Link to='/'><li className={styles.headerLi}><button className="btn btn-sm">로그인</button></li></Link>
             )

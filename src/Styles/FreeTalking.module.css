@@ -135,7 +135,7 @@
   height: 100px;
   padding: 20px;
   background: #01c466;
-  background:linear-gradient(264deg, #3accff, #01c466);
+  background:linear-gradient(264deg, #f2f4b0, #01c466);
   margin: 10px;
   border-radius: 6px;
 }
@@ -215,7 +215,7 @@
   width: 30px;
   height: 30px;
   margin: 3px;
-  border: 1px solid #01c466;
+  border: none;
   background: #ffffff;
   border-radius: 6px;
   transition: background 0.2s ease-in-out;
