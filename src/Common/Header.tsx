@@ -61,7 +61,7 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
             isLoggedIn ? (
               <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">{displayName}님 :&#41;</button></li></Link>
             ) : (
-              <Link to='/login'><li className={styles.headerLi}><button className="btn btn-sm">로그인</button></li></Link>
+              <Link to='/'><li className={styles.headerLi}><button className="btn btn-sm">로그인</button></li></Link>
             )
           }
         </ul>

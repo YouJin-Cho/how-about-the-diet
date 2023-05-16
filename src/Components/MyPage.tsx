@@ -12,7 +12,6 @@ const MyPage = ({ userObj }: userObjProps) => {
     const logOut =  confirm('로그아웃 하시겠습니까? 🫠') 
     if (logOut) {
       authService.signOut()
-      navigate('/login')
     } else {
     }
   }

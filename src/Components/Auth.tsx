@@ -8,7 +8,6 @@ import SocialLogin from './SocialLogin'
 const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [confirmPassword, setConfirmPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [newAccount, setNewAccount] = useState(true)
 

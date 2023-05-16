@@ -10,7 +10,7 @@ const Nutrients = () => {
       <div className={styels.imgContainer}>
         {
           nutrientData.map((nutrient) => (
-            <NutrientItems key={nutrient.id} nutrient={nutrient} />
+            <NutrientItems key={nutrient.title} nutrient={nutrient} />
           ))
         }
       </div>
