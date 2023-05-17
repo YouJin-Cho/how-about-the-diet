@@ -30,8 +30,8 @@
 
 
 
-## Project 시연 영상
-- YouTube : 
+## Project 시연 영상 ('식단어때'를 영상으로 확인해 보세요!)
+- YouTube : https://www.youtube.com/watch?v=A6v4SUv-TAo&list=PLR8FoyenzZ0W097_SdzTomj8VL4s6R_nY&index=1
 
 
 
