@@ -52,7 +52,7 @@ const FoodLike = ({ userObj }:userObjProps) => {
         });
         setLike(true)
         
-        const goMyPage = confirm("마이페이지에서 상품을 확인하시겠습니까?")
+        const goMyPage = confirm("찜리스트에서 음식을 확인하시겠습니까?")
         if (goMyPage) {
           navigate('/mypage')
         }
