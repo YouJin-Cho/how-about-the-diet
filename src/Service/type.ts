@@ -1,4 +1,5 @@
 import firebase from "firebase/compat";
+import { ReactNode } from "react";
 
 export interface filteredData {
   id: number;
@@ -72,4 +73,13 @@ export interface NutrientItemsProps {
     caution: string
     food: string
   }
+}
+
+export interface ThemeProps {
+  children: ReactNode
+}
+
+export type ThemeContextType = {
+  isDarkMode: boolean
+  toggleTheme: () => void
 }

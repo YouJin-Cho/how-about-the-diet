@@ -7,6 +7,7 @@ import { authService } from './firebase'
 import Login from './Components/Login'
 import styles from './Styles/MainContaier.module.css'
 import Footer from './Common/Footer'
+import Theme from './Common/Theme'
 
 function App() {
   const [init, setInit] = useState(false)
@@ -25,18 +26,20 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header isLoggedIn={isLoggedIn}/>
-      <ScrollToTop />
-      {
-        init && !isLoggedIn ? ( 
-          <Login /> 
-        ) : ( 
-          <div className={styles.MainContaier}>
-            <MainContainer isLoggedIn={isLoggedIn} userObj={null} />
-          </div>
-        )
-      }
-      <Footer />
+      <Theme>
+        <Header isLoggedIn={isLoggedIn}/>
+        <ScrollToTop />
+        {
+          init && !isLoggedIn ? ( 
+            <Login /> 
+          ) : ( 
+            <div className={styles.MainContaier}>
+              <MainContainer isLoggedIn={isLoggedIn} userObj={null} />
+            </div>
+          )
+        }
+        <Footer />
+      </Theme>
     </BrowserRouter>
   )
 }
