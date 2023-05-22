@@ -3,16 +3,27 @@ import { Link } from "react-router-dom"
 import { IoLogoYoutube } from 'react-icons/io'
 import { BsInstagram } from 'react-icons/bs' 
 import { AiFillFacebook } from 'react-icons/ai'
+import logo from '../../public/logo/logo.png';
+import logoDark from '../../public/logo/logoDark.png';
+import { useContext } from 'react'
+import { ThemeContext } from './Theme'
 
 const FooterInfo = () => {
   
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const backgroundStyle = {
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+
   return (
     <>
       <div className={styles.logoBox}>
         <div className={styles.logoContainer}>
-          <button className="btn btn-accent">
+          <button className="btn btn-accent" style={backgroundStyle}>
             <Link to='/'>
-              <img className={styles.logoImg} src='../../public/logo/logo.png' width='100px' height='40px' />
+            <img src={isDarkMode ? logoDark : logo} width='100px' height='40px' />
             </Link>
           </button>
         </div>

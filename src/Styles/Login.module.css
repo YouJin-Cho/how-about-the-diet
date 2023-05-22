@@ -112,11 +112,13 @@
 
 .googleLogin:hover {
   background: #027a40;
+  cursor: pointer;
 }
 
 .submitBtn {
   background: #00a554;
   transition: background 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .submitBtn:hover {

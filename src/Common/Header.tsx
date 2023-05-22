@@ -7,6 +7,8 @@ import { HeaderProps } from '../Service/type'
 import { FiSun } from 'react-icons/fi'
 import { FaMoon } from 'react-icons/fa'
 import { ThemeContext } from './Theme'
+import logo from '../../public/logo/logo.png';
+import logoDark from '../../public/logo/logoDark.png';
 
 
 // 페이지 이동 시, 화면 상위 고정
@@ -57,7 +59,7 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
       <div className={styles.mainLogo}>
         <Link to='/'>
           <div className={styles.logoContainer}>
-            <img src='../../public/logo/logo.png' width='100px' height='40px' />
+          <img src={isDarkMode ? logoDark : logo} width='100px' height='40px' />
           </div>
         </Link>
         <ul className={styles.headerUl}>

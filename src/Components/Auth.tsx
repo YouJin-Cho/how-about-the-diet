@@ -72,7 +72,6 @@ const Auth = () => {
   const { isDarkMode } = useContext(ThemeContext)
 
   const themeStyle = {
-    border: isDarkMode ? '2px solid rgb(1, 135, 71)' : '2px solid #01c466',
     background: isDarkMode ? 'rgb(1, 135, 71)' : '',
   }
 
