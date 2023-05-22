@@ -2,6 +2,8 @@ import styles from '../Styles/SearchFoodList.module.css'
 import foodData from '../../public/food.json'
 import { useNavigate, useParams } from 'react-router-dom';
 import SearchFood from './SearchFood';
+import { useContext } from 'react';
+import { ThemeContext } from '../Common/Theme';
 
 const SearchFoodList = () => {
 
@@ -16,13 +18,24 @@ const SearchFoodList = () => {
     navigate(`/detail/${id}`);
   }
 
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const borderStyle = {
+    border: isDarkMode ? '3px solid rgb(1, 135, 71)' : '',
+  }
+
+  const backgroundStyle = {
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+
   return (
     <>
       <div className={styles.mainContainer}>
         <div className={styles.searchFood}>
           <SearchFood />
         </div>
-        <div className={styles.foodList}>
+        <div className={styles.foodList} style={borderStyle}>
           <ul className={styles.foodListUl}>
             {
               filteredFood.length === 0 && (
@@ -37,7 +50,7 @@ const SearchFoodList = () => {
                 <div className={styles.imgSection}> 
                   <img src={food.image} />
                 </div>
-                <div className={styles.descSection}>
+                <div className={styles.descSection} style={backgroundStyle}>
                   <p>{`" ${food.title} "`} 어떠신가요? ☺️</p>
                 </div>
               </li>

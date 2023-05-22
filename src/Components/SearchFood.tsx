@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styles from '../Styles/MainPage.module.css'
 import { useNavigate } from 'react-router-dom'
 import foodData from '../../public/food.json'
+import { ThemeContext } from '../Common/Theme'
 
 const SearchFood = () => {
 
@@ -50,6 +51,18 @@ const SearchFood = () => {
     }
   }
 
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const themeStyle = {
+    border: isDarkMode ? '2px solid rgb(1, 135, 71)' : '',
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+
+  const borderStyle = {
+    border: isDarkMode ? '2px solid rgb(1, 135, 71)' : '',
+  }
+
   return (
     <>
       <input 
@@ -58,11 +71,12 @@ const SearchFood = () => {
         value={searchTerm}
         onChange={handleInputChange}
         onKeyDown={handleKeyPress}
+        style={borderStyle}
       ></input>
-      <button className="btn btn-lg" onClick={handleSearchClick}>검색</button>
+      <button className="btn btn-lg" onClick={handleSearchClick} style={themeStyle}>검색</button>
       {
         searchTerm !== "" && foodTitles.length > 0 && (
-          <ul className={styles.searchUl}>
+          <ul className={styles.searchUl} style={borderStyle}>
             {
               foodTitles.map((title) => (
                 <li key={title} onClick={() => handleTitleClick(title)}>{title}</li>

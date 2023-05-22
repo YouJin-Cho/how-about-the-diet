@@ -129,7 +129,6 @@
 .photoTalk {
   display: flex;
   justify-content: flex-end;
-  /* background: #00d06b; */
   background:linear-gradient(264deg, #f2f4b0, #01c466);
   padding: 20px;
   width: 700px;
@@ -142,6 +141,7 @@
   height: 100px;
   padding: 20px;
   background: #01c466;
+  color: #ffffff;
   margin: 10px;
   border-radius: 6px;
 }

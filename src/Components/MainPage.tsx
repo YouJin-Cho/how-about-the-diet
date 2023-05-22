@@ -3,6 +3,7 @@ import FilterFood from './FilterFood';
 import SearchFood from './SearchFood';
 
 const MainPage = () => {
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.searchFood}>

@@ -1,10 +1,11 @@
 import styles from '../Styles/FilterFood.module.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import foodData from '../../public/food.json'
 import { categoryTypes, filteredData } from '../Service/type'
 import { FreshOrMelas, efficacys, kcals } from '../Service/FilterFoodDropdown'
 import { useNavigate } from 'react-router-dom'
 import "daisyui/dist/styled.css";
+import { ThemeContext } from '../Common/Theme'
 
 const FilterFood = () => {
   const [freshOrMeals, setFreshOrMeals] = useState<categoryTypes>(FreshOrMelas[0])
@@ -103,20 +104,31 @@ const FilterFood = () => {
     setCurrentPage(pageNumber)
   }
 
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const borderStyle = {
+    border: isDarkMode ? '1px solid rgb(1, 135, 71)' : '',
+  }
+
+  const backgroundStyle = {
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+
   return (
     <div className={styles.filterFoodContainer}>
       <div className={styles.dropDownContainer}>
-        <select className="select select-success w-full max-w-xs" onChange={handleFreshOrMealsChange} value={freshOrMeals.state}>
+        <select className="select select-success w-full max-w-xs" onChange={handleFreshOrMealsChange} value={freshOrMeals.state} style={borderStyle}>
           {FreshOrMelas.map((fm) => (
             <option className={styles.dropdownOption} key={fm.state} value={fm.state}>{fm.name}</option>
           ))}
         </select>
-        <select className="select select-success w-full max-w-xs" onChange={handleEfficacyChange} value={efficacyFilter}>
+        <select className="select select-success w-full max-w-xs" onChange={handleEfficacyChange} value={efficacyFilter} style={borderStyle}>
           {efficacys.map((efficacy) => (
             <option key={efficacy.state} value={efficacy.state}>{efficacy.name}</option>
           ))}
         </select>
-        <select className="select select-success w-full max-w-xs" onChange={handleKcalChange} value={kcalFilter}>
+        <select className="select select-success w-full max-w-xs" onChange={handleKcalChange} value={kcalFilter} style={borderStyle}>
           {kcals.map((kcal) => (
             <option key={kcal.state} value={kcal.state}>{kcal.name}</option>
           ))}
@@ -125,7 +137,7 @@ const FilterFood = () => {
       {/* 페이지네이션 */}
       {
         currentItems.length === 0 ? (
-          <section className={styles.noFood}>
+          <section className={styles.noFood} style={borderStyle}>
             <p>해당 음식이 없습니다 😂</p>
           </section>
         ) : (
@@ -135,7 +147,7 @@ const FilterFood = () => {
                 <section className={styles.imgSection}> 
                   <img src={food.image} />
                 </section>
-                <section className={styles.descSection}>
+                <section className={styles.descSection} style={backgroundStyle}>
                   <p>{food.title}</p>
                 </section>
               </li>
@@ -150,6 +162,9 @@ const FilterFood = () => {
               <li key={index}>
                 <button 
                   className="btn btn-xs"
+                  style={{
+                    background: currentPage === index + 1 ? (isDarkMode ? '#01ad5a' : '') : (isDarkMode ? 'rgb(1, 135, 71)' : ''),
+                  }}
                   onClick={() => handlePageChange(index + 1)}
                   disabled={currentPage === index + 1}>
                   {index + 1}

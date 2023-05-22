@@ -1,9 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
 import styles from '../Styles/Header.module.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import cx from 'clsx'
 import { authService } from '../firebase'
 import { HeaderProps } from '../Service/type'
+import { FiSun } from 'react-icons/fi'
+import { FaMoon } from 'react-icons/fa'
+import { ThemeContext } from './Theme'
 
 
 // 페이지 이동 시, 화면 상위 고정
@@ -42,8 +45,15 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
     return nameOn
   }, [])
 
+  // 테마 변경
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext)
+
+  const themeStyle = {
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+  
   return (
-    <div className={isSticky ? cx(styles.headerContainer, styles.sticky) : styles.headerContainer}>
+    <div className={isSticky ? cx(styles.headerContainer, styles.sticky) : styles.headerContainer} style={themeStyle}>
       <div className={styles.mainLogo}>
         <Link to='/'>
           <div className={styles.logoContainer}>
@@ -57,6 +67,9 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
       </div>
       <div>
         <ul className={styles.mypageUl}>
+          <button className={styles.themeIcon}>
+            {isDarkMode ? <FiSun className={styles.fi} onClick={toggleTheme} /> : <FaMoon className={styles.fa} onClick={toggleTheme} />}
+          </button>
           {
             isLoggedIn ? (
               <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">찜리스트</button></li></Link>

@@ -1,9 +1,10 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import styles from '../Styles/Login.module.css'
 import { authService } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 import firebase from 'firebase/compat/app'
 import SocialLogin from './SocialLogin'
+import { ThemeContext } from '../Common/Theme'
 
 const Auth = () => {
   const [email, setEmail] = useState('')
@@ -67,26 +68,42 @@ const Auth = () => {
     setNewAccount((prev) => !prev)
   }
 
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const themeStyle = {
+    border: isDarkMode ? '2px solid rgb(1, 135, 71)' : '2px solid #01c466',
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+
+  const borderStyle = {
+    border: isDarkMode ? '2px solid rgb(1, 135, 71)' : '',
+  }
+
+  const colorStyle = {
+    color: isDarkMode ? 'rgb(1, 135, 71)' : ''
+  }
+
   return (
     <>
-      <button className="btn btn-xs" onClick={toggleAccount}>{newAccount ? '💁‍♀️ 식단어때에 로그인 해주세요!' : '💁‍♀️ 식단어때가 처음이신가요?'}</button>
+      <button className="btn btn-xs" style={themeStyle} onClick={toggleAccount}>{newAccount ? '💁‍♀️ 식단어때에 로그인 해주세요!' : '💁‍♀️ 식단어때가 처음이신가요?'}</button>
       <div>
         <form className={styles.idPassword} onSubmit={onSubmit}>
           {newAccount && (
             <div>
-              <span>닉네임</span>
-              <input type='text' name='displayName' value={displayName} onChange={onChanged} placeholder='Name' required/>
+              <span style={colorStyle}>닉네임</span>
+              <input type='text' name='displayName' value={displayName} onChange={onChanged} placeholder='Name' required style={borderStyle}/>
             </div>
           )}
           <div>
-            <span>이메일</span>
-            <input type='email' name='email' value={email} onChange={onChanged} placeholder='Email' required/>
+            <span style={colorStyle}>이메일</span>
+            <input type='email' name='email' value={email} onChange={onChanged} placeholder='Email' required style={borderStyle}/>
           </div>
           <div>
-            <span>비밀번호</span>
-            <input type='password' name='password' value={password} onChange={onChanged} placeholder='Password' required/>
+            <span style={colorStyle}>비밀번호</span>
+            <input type='password' name='password' value={password} onChange={onChanged} placeholder='Password' required style={borderStyle}/>
           </div>
-          <input className={styles.submitBtn} type='submit' value={newAccount ? '회원가입' : '로그인'} />
+          <input className={styles.submitBtn} style={themeStyle} type='submit' value={newAccount ? '회원가입' : '로그인'} />
         </form>
       </div>
       {

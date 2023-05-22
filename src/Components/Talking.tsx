@@ -1,9 +1,10 @@
 import { dbService, storageService } from "../firebase";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { TalkingProps } from "../Service/type";
 import styles from '../Styles/FreeTalking.module.css'
 import { FaTrashAlt } from 'react-icons/fa'
 import { BsFillPencilFill } from 'react-icons/bs'
+import { ThemeContext } from "../Common/Theme";
 
 const Talking = (props:TalkingProps) => {
 
@@ -40,9 +41,16 @@ const Talking = (props:TalkingProps) => {
     setNewTalk(value)
   }
 
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const backgroundStyle = {
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+
   return (
     <>
-      <div className={styles.talkList}>
+      <div className={styles.talkList} style={ backgroundStyle }>
         {
           editing ? (
             <>

@@ -1,9 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 import styles from '../Styles/MyPage.module.css'
 import { authService, dbService } from '../firebase'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { LikeFoods, userObjProps} from '../Service/type'
 import { AiFillHeart } from 'react-icons/ai'
+import { ThemeContext } from '../Common/Theme'
 
 const MyPage = ({ userObj }: userObjProps) => {
 
@@ -67,21 +68,32 @@ const MyPage = ({ userObj }: userObjProps) => {
     navigate(`/detail/${id}`)
   }
 
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const borderStyle = {
+    border: isDarkMode ? '2px solid rgb(1, 135, 71)' : '',
+  }
+
+  const backgroundStyle = {
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+
   return (
     <div className={styles.myPageContainer}>
       <div className={styles.logOutBtn}>
-        <button className="btn btn-accent" onClick={onLogOutClick}>로그아웃</button>
+        <button className="btn btn-accent" onClick={onLogOutClick} style={backgroundStyle}>로그아웃</button>
       </div>
       {
         likeFoods.length === 0 ? (
           <>
-            <button className="btn btn-accent"><Link to='/'>{userObj?.displayName}<span style={{ fontSize: '15px' }}>님 <br />음식을 담아주세요 🥹</span></Link></button>
+            <button className="btn btn-accent" style={borderStyle}><Link to='/'>{userObj?.displayName}<span style={{ fontSize: '15px' }}>님 <br />음식을 담아주세요 🥹</span></Link></button>
           </>
         ) : (
-          <button className="btn btn-accent" onClick={deleteAllClick}>🍎 음식 전체 삭제 🥦</button>
+          <button className="btn btn-accent" onClick={deleteAllClick} style={borderStyle}>🍎 음식 전체 삭제 🥦</button>
         )
       }
-      <div className={styles.likeContainer}>
+      <div className={styles.likeContainer} style={borderStyle}>
         <div className={styles.likeBox}>
           {likeFoods.length === 0 ? (
             <p>찜한 음식이 없습니다. <br/>원하는 음식을 담아보세요 💁‍♀️</p>
@@ -91,7 +103,7 @@ const MyPage = ({ userObj }: userObjProps) => {
                 {likeFoods.map((food) => (
                   <li key={food.id}>
                     <img src={food.image} width='50px' height='50px' onClick={()=>likeFoodClick(Number(food.id))}/>
-                    <p>{food.title}</p>
+                    <p style={backgroundStyle}>{food.title}</p>
                     <AiFillHeart className={styles.likeIcon} onClick={()=>deleteClick(food.id)} />
                   </li>
                 ))}

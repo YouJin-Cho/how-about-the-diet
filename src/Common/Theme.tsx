@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react"
 import { ThemeContextType, ThemeProps } from "../Service/type"
 
-// context
+// context 생성
 export const ThemeContext = createContext<ThemeContextType>({
   isDarkMode: false,
   toggleTheme: () => {}

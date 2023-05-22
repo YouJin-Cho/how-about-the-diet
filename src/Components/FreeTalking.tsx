@@ -1,10 +1,11 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react'
 import styles from '../Styles/FreeTalking.module.css'
 import { dbService, storageService } from '../firebase'
 import { userObjProps, Talks } from '../Service/type'
 import Talking from './Talking'
 import { v4 as uuidv4 } from 'uuid';
 import { FaTrashAlt } from 'react-icons/fa'
+import { ThemeContext } from '../Common/Theme'
 
 const FreeTalking = ({ userObj }:userObjProps) => {
 
@@ -79,11 +80,24 @@ const FreeTalking = ({ userObj }:userObjProps) => {
     } 
   }
 
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const borderStyle = {
+    border: isDarkMode ? '2px solid rgb(1, 135, 71)' : '2px solid #01c466',
+  }
+  
+  const gradientStyle = {
+    background: isDarkMode
+    ? 'linear-gradient(264deg, rgb(253, 255, 153), rgb(1, 135, 71))'
+    : 'linear-gradient(264deg, #f2f4b0, #01c466)',
+  }
+
   return (
     <div className={styles.talkContainer}>
       <div className={styles.talkingContainer}>
         <h3>함께 식단을 공유하세요! 💁‍♀️</h3>
-          <div className={styles.talkBox}>
+          <div className={styles.talkBox} style={borderStyle}>
             <div>
               {
                 talks === null 
@@ -103,7 +117,7 @@ const FreeTalking = ({ userObj }:userObjProps) => {
             </div>
           </div>
           <form className={styles.photoForm} onSubmit={onSubmit}>
-            <div className={styles.photoTalk}>
+            <div className={styles.photoTalk} style={gradientStyle}>
               <input className={styles.file} type='file' accept='image/*' onChange={fileChange}/>
               <input className={styles.text} type='text' value={talk} onChange={onChange} placeholder='오늘은 연어를 먹었어요 🥹' maxLength={120} required/>
               <input className={styles.submit} type='submit' value='전송' />
