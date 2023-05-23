@@ -139,3 +139,23 @@
   font-size: 15px;
   font-weight: bold;
 }
+
+.bsBtn {
+  margin-left: 250px;
+  margin-top: 30px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 16%;
+  background: #01c466;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.bsBtn:hover {
+  background: #027a40;
+}
+
+
+

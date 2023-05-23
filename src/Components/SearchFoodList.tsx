@@ -5,6 +5,7 @@ import SearchFood from './SearchFood';
 import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../Common/Theme';
 import { filteredData } from '../Service/type';
+import { BsArrowRepeat } from 'react-icons/bs'
 
 const SearchFoodList = () => {
 
@@ -47,6 +48,11 @@ const SearchFoodList = () => {
     setRandomFoods(randomFoods)
   }
 
+  // 랜덤 버튼
+  const randomRetry = () => {
+    randomFoodList()
+  }
+
   // 테마 변경
   const { isDarkMode } = useContext(ThemeContext)
 
@@ -71,7 +77,7 @@ const SearchFoodList = () => {
                 <>
                   <p></p>
                   <p className={styles.random}>해당 음식이 없습니다. 아래 추천 음식은 어떠세요? 💁‍♀️</p>
-                  <p></p>
+                  <button className={styles.bsBtn} onClick={randomRetry} style={backgroundStyle}><BsArrowRepeat /></button>
                   {randomFoods && randomFoods.map((food) => (
                     <li className={styles.foodListLi} key={food.id} onClick={() => handleFoodClick(food.id)}>
                       <div className={styles.imgSection}>
