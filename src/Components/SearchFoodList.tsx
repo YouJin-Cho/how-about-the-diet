@@ -2,20 +2,49 @@ import styles from '../Styles/SearchFoodList.module.css'
 import foodData from '../../public/food.json'
 import { useNavigate, useParams } from 'react-router-dom';
 import SearchFood from './SearchFood';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../Common/Theme';
+import { filteredData } from '../Service/type';
 
 const SearchFoodList = () => {
 
   const { searchTerm } = useParams<{ searchTerm: string }>()
 
   const navigate = useNavigate()
+
+  // 전체 음식
+  const allFoods = foodData
+
+  // 검색 음식
   const filteredFood = searchTerm
-  ? foodData.filter((food) => food.title.includes(searchTerm))
+  ? allFoods.filter((food) => food.title.includes(searchTerm))
   : [];
 
   const handleFoodClick = (id: number) => {
     navigate(`/detail/${id}`);
+  }
+
+  // 랜덤추천
+  const [randomFoods, setRandomFoods] = useState<filteredData[] | null>(null)
+
+  useEffect(() => {
+    if(filteredFood.length === 0) {
+      randomFoodList()
+    } else {
+    setRandomFoods(null)
+    }
+  }, [searchTerm])
+
+  const randomFoodList = () => {
+    const foodDataCopy = [...allFoods]
+    const randomFoods: filteredData[] = []
+
+    while(randomFoods.length < 3 && foodDataCopy.length > 0) {
+      const randomIndex = Math.floor(Math.random() * foodDataCopy.length)
+      const randomFood = foodDataCopy.splice(randomIndex, 1)[0]
+      randomFoods.push(randomFood)
+    }
+    setRandomFoods(randomFoods)
   }
 
   // 테마 변경
@@ -41,7 +70,18 @@ const SearchFoodList = () => {
               filteredFood.length === 0 && (
                 <>
                   <p></p>
-                  <p className={styles.noFood}>검색한 음식이 없습니다.. 🤦‍♀️ <br/> 연어는 어떠세요? 💁‍♀️</p>
+                  <p className={styles.random}>해당 음식이 없습니다. 아래 추천 음식은 어떠세요? 💁‍♀️</p>
+                  <p></p>
+                  {randomFoods && randomFoods.map((food) => (
+                    <li className={styles.foodListLi} key={food.id} onClick={() => handleFoodClick(food.id)}>
+                      <div className={styles.imgSection}>
+                        <img src={food.image} alt={food.title} />
+                      </div>
+                      <div className={styles.descSection} style={backgroundStyle}>
+                        <p>{`"${food.title}"`} 어떠신가요?</p>
+                      </div>
+                    </li>
+                  ))}
                 </>
               )
             }
