@@ -10,6 +10,20 @@
   margin-top: 300px;
 }
 
+.profileP {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 70px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffffff;
+  background: #01c466;
+}
+
 .profileBox {
   display: flex;
   flex-direction: column;

@@ -29,6 +29,7 @@ const Profile = ({ userObj }: userObjProps) => {
     }
   }
 
+
   // 테마 변경
   const { isDarkMode } = useContext(ThemeContext)
 
@@ -42,6 +43,7 @@ const Profile = ({ userObj }: userObjProps) => {
 
   return (
     <div className={styles.profileContainer}>
+      <p className={styles.profileP} style={backgroundStyle}>식단어때 프로필</p>
       <div className={styles.profileBox} style={borderStyle}>
         <div className={styles.profileImg} style={backgroundStyle}>
           <FaUserAlt className={styles.fa}/>
