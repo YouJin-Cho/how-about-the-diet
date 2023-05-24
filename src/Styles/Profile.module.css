@@ -5,20 +5,74 @@
   margin: 0 auto;
   padding: 0px 100px;
   min-width: 1280px;
-  max-height: 800px;
-  min-height: 800px;
-  margin-top: 150px;
+  max-height: 700px;
+  min-height: 700px;
+  margin-top: 300px;
 }
 
 .profileBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 500px;
-  height: 500px;
+  height: 400px;
   border: 3px solid #01c466;
   border-radius: 16px;
   padding: 20px;
 }
 
-.profileImg > img {
-  width: 100px;
-  height: 100px;
+.profileImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  width: 120px;
+  height: 120px;
+  color: #ffffff;
+  background: #01c466;
+  border-radius: 50%;
 }
+
+.fa {
+  display: flex;
+  width: 80px;
+  height: 80px;
+}
+
+.profileDisplayname {
+  display: flex;
+  margin: 50px 0px 30px 0px;
+}
+
+.profileDisplayname > p {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+}
+
+.change {
+  width: 150px;
+  height: 30px;
+  border: 2px solid #01c466;
+  border-radius: 6px;
+}
+
+.submitBtn {
+  margin-left: 5px;
+  width: 40px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #01c466;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.submitBtn:hover {
+  background: #027a40;
+}
+

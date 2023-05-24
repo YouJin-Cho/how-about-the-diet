@@ -1,13 +1,15 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import styles from '../Styles/Profile.module.css'
 import { userObjProps } from '../Service/type'
+import { FaUserAlt } from 'react-icons/fa'
+import { ThemeContext } from '../Common/Theme'
 
 const Profile = ({ userObj }: userObjProps) => {
 
   const [newDisplayName, setNewDisplayName] = useState(userObj?.displayName || '')
   const [displayNameUpdate, setdisplayNameUpdate] = useState(false)
 
-
+  // displayName 작성
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
@@ -15,6 +17,7 @@ const Profile = ({ userObj }: userObjProps) => {
     setNewDisplayName(value)
   }
 
+  // displayName 업로드
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setdisplayNameUpdate(true)
@@ -26,18 +29,30 @@ const Profile = ({ userObj }: userObjProps) => {
     }
   }
 
+  // 테마 변경
+  const { isDarkMode } = useContext(ThemeContext)
+
+  const borderStyle = {
+    border: isDarkMode ? '2px solid rgb(1, 135, 71)' : '2px solid #01c466',
+  }
+
+  const backgroundStyle = {
+    background: isDarkMode ? 'rgb(1, 135, 71)' : '',
+  }
+
   return (
     <div className={styles.profileContainer}>
-      <div className={styles.profileBox}>
-        <div className={styles.profileImg}>
-          <img src='../../public/Nutrients/protein.jpg' />
+      <div className={styles.profileBox} style={borderStyle}>
+        <div className={styles.profileImg} style={backgroundStyle}>
+          <FaUserAlt className={styles.fa}/>
         </div>
-        <div>
+        <div className={styles.profileDisplayname}>
+          <p>닉네임 : </p>
           <p>{userObj?.displayName}</p>
         </div>
         <form onSubmit={onSubmit}>
-          <input type='text' onChange={onChange} placeholder='닉네임' value={newDisplayName} />
-          <input type='submit' value='수정' disabled={displayNameUpdate}/>
+          <input type='text' onChange={onChange} className={styles.change} placeholder='닉네임' value={newDisplayName} style={borderStyle}/>
+          <input type='submit' value='변경' className={styles.submitBtn} disabled={displayNameUpdate} style={backgroundStyle}/>
         </form>
       </div>
     </div>
