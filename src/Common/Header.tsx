@@ -72,9 +72,10 @@ const Header = ({ isLoggedIn }: HeaderProps) => {
           <button className={styles.themeIcon}>
             {isDarkMode ? <FiSun className={styles.fi} onClick={toggleTheme} /> : <FaMoon className={styles.fa} onClick={toggleTheme} />}
           </button>
+          <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">찜리스트</button></li></Link>
           {
             isLoggedIn ? (
-              <Link to='/mypage'><li className={styles.headerLi}><button className="btn btn-sm">찜리스트</button></li></Link>
+              <Link to='/profile'><li className={styles.headerLi}><button className="btn btn-sm">마이페이지</button></li></Link>
             ) : (
               <Link to='/'><li className={styles.headerLi}><button className="btn btn-sm">로그인</button></li></Link>
             )

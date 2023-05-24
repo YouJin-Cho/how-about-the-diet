@@ -10,6 +10,7 @@ import { userObjProps } from "../Service/type"
 import { useEffect, useState } from "react"
 import { authService } from "../firebase"
 import firebase from "../firebase"
+import Profile from "./Profile"
 
 const MainContainer = ({ isLoggedIn }: userObjProps) => {
 
@@ -34,6 +35,7 @@ const MainContainer = ({ isLoggedIn }: userObjProps) => {
             <Route path="/nutrients/:id" element={<DetailNutrients />} />
             <Route path="/detail/:id" element={<DetailFood userObj={userObj}/>} />
             <Route path="/search/:searchTerm" element={<SearchFoodList />} />
+            <Route path="/profile" element={<Profile userObj={userObj} />} />
             <Route path="/mypage" element={<MyPage userObj={userObj} />} />
             <Route path="/FreeTalking" element={<FreeTalking userObj={userObj} />} />
           </>
