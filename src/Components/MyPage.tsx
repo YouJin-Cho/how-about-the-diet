@@ -11,16 +11,6 @@ const MyPage = ({ userObj }: userObjProps) => {
   const [likeFoods, setLikeFoods] = useState<LikeFoods[]>([]);
   const navigate = useNavigate()
 
-  // 로그아웃
-  const onLogOutClick = () => {
-    const logOut =  confirm('로그아웃 하시겠습니까? 🫠') 
-    if (logOut) {
-      authService.signOut()
-      navigate('/')
-    } else {
-    }
-  }
-
   // 찜한 음식 가져오기
   const fetchData = async() => {
     if(userObj) {
@@ -81,9 +71,6 @@ const MyPage = ({ userObj }: userObjProps) => {
 
   return (
     <div className={styles.myPageContainer}>
-      <div className={styles.logOutBtn}>
-        <button className="btn btn-accent" onClick={onLogOutClick} style={backgroundStyle}>로그아웃</button>
-      </div>
       {
         likeFoods.length === 0 ? (
           <>
