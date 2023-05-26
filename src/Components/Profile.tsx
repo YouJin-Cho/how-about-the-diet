@@ -10,15 +10,20 @@ const Profile = ({ userObj }: userObjProps) => {
 
   const [newDisplayName, setNewDisplayName] = useState(userObj?.displayName || '')
   const [displayNameUpdate, setdisplayNameUpdate] = useState(false)
+  const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
 
   // displayName 작성
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
-      target: { value },
+      target: { name, value },
     } = e
-    setNewDisplayName(value)
+    if(name === 'displayName') {
+      setNewDisplayName(value)
+    } else if (name === 'password') {
+      setPassword(value)
+    }
   }
 
   // displayName 업로드
@@ -31,6 +36,20 @@ const Profile = ({ userObj }: userObjProps) => {
       })
       setdisplayNameUpdate(false)
     }
+
+    // if (password !== '') {
+    //   try {
+    //     if (password.length < 6) {
+    //       throw new Error('비밀번호는 최소 6자리 이상이어야 합니다.');
+    //     }
+  
+    //     await authService.currentUser?.updatePassword(password);
+    //     alert('비밀번호가 변경되었습니다.');
+    //     setPassword('');
+    //   } catch (error) {
+    //     alert(error);
+    //   }
+    // }
   }
 
   // 로그아웃
@@ -69,8 +88,15 @@ const Profile = ({ userObj }: userObjProps) => {
           <p>{userObj?.displayName}</p>
         </div>
         <form onSubmit={onSubmit}>
-          <input type='text' onChange={onChange} className={styles.change} placeholder='닉네임' value={newDisplayName} style={borderStyle}/>
+          <input type='text' name='displayName' onChange={onChange} className={styles.change} placeholder='닉네임' value={newDisplayName} style={borderStyle}/>
           <input type='submit' value='변경' className={styles.submitBtn} disabled={displayNameUpdate} style={backgroundStyle}/>
+        </form>
+        <form onSubmit={onSubmit}>
+          <div>
+            <span>비밀번호</span>
+            <input type='password' name='password' placeholder='Password' onChange={onChange} value={password} required style={borderStyle}/>
+          </div>
+          <input className={styles.submitBtn} type='submit' value='변경'/>
         </form>
       </div>
     </div>
