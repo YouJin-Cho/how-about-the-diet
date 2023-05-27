@@ -5,6 +5,7 @@ import { FaUserAlt } from 'react-icons/fa'
 import { ThemeContext } from '../Common/Theme'
 import { useNavigate } from 'react-router-dom'
 import { authService } from '../firebase'
+import firebase from 'firebase/compat/app'
 
 const Profile = ({ userObj }: userObjProps) => {
 
@@ -34,22 +35,23 @@ const Profile = ({ userObj }: userObjProps) => {
       await userObj?.updateProfile({
         displayName: newDisplayName
       })
-      setdisplayNameUpdate(false)
     }
 
-    // if (password !== '') {
-    //   try {
-    //     if (password.length < 6) {
-    //       throw new Error('비밀번호는 최소 6자리 이상이어야 합니다.');
-    //     }
-  
-    //     await authService.currentUser?.updatePassword(password);
-    //     alert('비밀번호가 변경되었습니다.');
-    //     setPassword('');
-    //   } catch (error) {
-    //     alert(error);
-    //   }
-    // }
+    // password 업로드
+    if(password !== '') {
+      try {
+        await authService.currentUser?.updatePassword(password)
+        alert('비밀번호가 변경되었습니다.')
+        setPassword('')
+      } catch (error) {
+        const authError = error as firebase.auth.Error
+        if (authError.code === 'auth/weak-password') {
+          alert('비밀번호는 6자리 이상 입력해주세요.')
+        }
+      }
+    }
+
+    setdisplayNameUpdate(false)
   }
 
   // 로그아웃
@@ -91,10 +93,12 @@ const Profile = ({ userObj }: userObjProps) => {
           <input type='text' name='displayName' onChange={onChange} className={styles.change} placeholder='닉네임' value={newDisplayName} style={borderStyle}/>
           <input type='submit' value='변경' className={styles.submitBtn} disabled={displayNameUpdate} style={backgroundStyle}/>
         </form>
+        <div className={styles.profileDisplayname}>
+          <p>비밀번호 변경</p>
+        </div>
         <form onSubmit={onSubmit}>
           <div>
-            <span>비밀번호</span>
-            <input type='password' name='password' placeholder='Password' onChange={onChange} value={password} required style={borderStyle}/>
+            <input type='password' name='password' placeholder='Password' onChange={onChange} value={password} required style={borderStyle} className={styles.change}/>
           </div>
           <input className={styles.submitBtn} type='submit' value='변경'/>
         </form>
