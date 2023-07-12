@@ -1,46 +1,52 @@
-# Project '식단어때 (How-about-the-diet)'
+# 💁‍♀️ 식단어때 (How-about-the-diet)
 "건강하게 먹자! 똑똑하게 먹자!"
 
 성인 비만율을 조사하면, 매년 50% 가까운 수치에 도달하면서 건강 위험성이 강조되고 있습니다. 
 이에 따라 건강을 챙기며 똑똑하게 먹자는 인식이 강해지면서 건강식의 인기가 계속해서 늘어나고 있습니다. 
 따라서 사용자가 다양한 건강식을 한 눈에 보고, 취향에 맞게 음식을 선택하며, 다른 사용자와 소통할 수 있는 사이트인 ‘식단어때’를 기획하였습니다. 
 
+## ⚙️ Install
+1. clone(SSH) : git@github.com:YouJin-Cho/how-about-the-diet.git
+2. terminal ➡️ cd how-about-the-diet
+3. npm install
+4. npm run dev
 
-
-## Project 기술 스택
+## 💪🏻 기술 스택
 
 - TypeScript
 - React
 - Vite
+- React Router
+- Context API
 - Firebase
-- DaisyUI CSS
+- DaisyUI
 
 
 
-## Project 기능
+## 🎬 시연 영상 및 회고록
+<h3>
+    👉🏻 <a href="https://www.youtube.com/watch?v=izifktf0CKc&list=PLR8FoyenzZ0W097_SdzTomj8VL4s6R_nY&index=2">시연 영상 Youtube 보러가기
+    </a>
+    <br>
+    👉🏻 <a href="https://cyjcyj.tistory.com/169">블로그 회고록 보러가기</a>
+</h3> 
 
+## 🥦 기능 소개
 - firebase 백엔드 서비스 연동
-- 회원가입 및 로그인
-- 구글 소셜 로그인
+- 회원가입 및 로그인(일반 / 구글)
+- 식단 공유방(이미지 업로드 및 글쓰기, 수정, 삭제)
 - 음식 검색 및 검색 키워드 자동완성
 - 음식 필터링(카테고리 분류) + 페이지네이션
 - 음식 찜하기 및 찜리스트
-- 사용자 간 소통 채팅창(사진 및 글쓰기, 수정, 삭제)
-- 영양소 소개
 - 테마 변경(Light & Dark)
 - 음식 랜덤 추천
 - 회원정보 닉네임, 비밀번호 수정
+- 영양소 소개
 
 
-## Project 시연 영상 ('식단어때'를 영상으로 확인해 보세요!)
-- YouTube : https://www.youtube.com/watch?v=izifktf0CKc&list=PLR8FoyenzZ0W097_SdzTomj8VL4s6R_nY&index=2
-- Blog : https://cyjcyj.tistory.com/169
+## 🥑 주요 기능
+- 식단 공유방(이미지 업로드 및 글쓰기, 수정, 삭제)
 
-
-## Project 화면 구현 예시
-- 회원가입(로그인)
-
-![IMB_G2moiH](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/4d872721-7faf-46c8-a290-0a7a2219ca4c)
 
 - 대표 기능 예시 (필터링 및 검색)
 
