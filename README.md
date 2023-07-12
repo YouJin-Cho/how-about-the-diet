@@ -22,13 +22,12 @@
 - DaisyUI
 
 
-
 ## 🎬 시연 영상 및 회고록
 <h3>
-    👉🏻 <a href="https://www.youtube.com/watch?v=izifktf0CKc&list=PLR8FoyenzZ0W097_SdzTomj8VL4s6R_nY&index=2">시연 영상 Youtube 보러가기
+    👉🏻 <a href="https://www.youtube.com/watch?v=izifktf0CKc&list=PLR8FoyenzZ0W097_SdzTomj8VL4s6R_nY&index=2" target="_blank">시연 영상 Youtube 보러가기
     </a>
     <br>
-    👉🏻 <a href="https://cyjcyj.tistory.com/169">블로그 회고록 보러가기</a>
+    👉🏻 <a href="https://cyjcyj.tistory.com/169" target="_blank">블로그 회고록 보러가기</a>
 </h3> 
 
 ## 🥦 기능 소개
@@ -38,27 +37,34 @@
 - 음식 검색 및 검색 키워드 자동완성
 - 음식 필터링(카테고리 분류) + 페이지네이션
 - 음식 찜하기 및 찜리스트
-- 테마 변경(Light & Dark)
 - 음식 랜덤 추천
+- 테마 변경(Light & Dark)
 - 회원정보 닉네임, 비밀번호 수정
 - 영양소 소개
 
 
-## 🥑 주요 기능
-- 식단 공유방(이미지 업로드 및 글쓰기, 수정, 삭제)
+## 🥑 주요 기능 (GIF)
+- 식단 공유방(이미지 업로드 및 글쓰기)<br>
+![IMB_sCNJFK](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/6005a38c-dfd5-48d8-89bf-e5f6120d3712)
+- 식단 공유방(글 수정, 삭제)<br>
+![5  소통 수정 (1)](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/76453820-bce6-43ce-8f55-86c472f2593c)
 
+- 음식 검색 및 검색 키워드 자동완성<br>
+![2  검색](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/09d3937a-0ed9-487c-b662-87cdb1c5023c)
 
-- 대표 기능 예시 (필터링 및 검색)
+- 음식 필터링(카테고리 분류) + 페이지네이션<br>
+![1  카테고리 선택 (1)](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/a0718d87-fcc1-4ad2-b7b7-c495d124e5a1)
 
-![IMB_gYpPdK (1)](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/33db71d7-395d-4d1c-a263-14521be50058)
+- 음식 찜하기 및 찜리스트<br>
+![3  찜하기 (1)](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/066c4ba6-957e-469e-b9b7-44d0134c8f24)
 
+- 테마 변경(Light & Dark)<br>
+![6  테마 (1)](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/d9aadeff-b224-4038-821a-c24754007f18)
 
+- 음식 랜덤 추천<br>
+![7  랜덤](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/6be4e397-98ff-4e84-ab60-b42108cbb2d1)
 
+- 회원정보 닉네임, 비밀번호 수정<br>
+![8  회원정보수정](https://github.com/YouJin-Cho/how-about-the-diet/assets/122290134/a85654d9-d2cf-485f-9154-a236bec65a2f)
 
-## Project 회고
-'식단어때' 프로젝트를 진행하면서 백엔드 서비스를 이용하기 위해 처음 firebase를 접했으며, firebase에 연동하여 CRUD를 구현하는 것이 매우 까다로웠다.
-장애물을 만날 때마다 공식 문서와 친해지기 위해 노력했고, 웹 사이트에 기본적이지만 필수적인 기능들을 구현하면서 어떻게 반응하고 이를 어떻게 캐치할지 등을 분석한 좋은 경험이었다.
-페이지네이션, form 등 간편하게 개발할 수 있는 라이브러리가 많았지만, 작동하는 원리를 최대한 파악하기 위해 라이브러리 사용을 최소화하고, 코드로 구현하였다.
-기한 내에 프로젝트를 진행해야 하기 때문에 기획했던 기능만 개발하였지만, 이후 계속해서 테마 변경 및 여러가지 구현해보고 싶은 기능들을 추가할 계획이다. 
-물론 코드도 더욱 깔끔하게 정리하고, 상태 관리를 간편하게 해주는 Recoil도 사용하여 보완할 계획이다!
 
